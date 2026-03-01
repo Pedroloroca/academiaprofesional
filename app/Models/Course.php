@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Course extends Model implements HasMedia
 {
-    use InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
     
     protected $fillable = ['teacher_id', 'title', 'slug', 'description', 'price', 'status'];
 

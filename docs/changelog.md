@@ -26,3 +26,25 @@ Se ha establecido la base sólida del sistema, incluyendo el esquema de base de 
 - **Configuración**: Ajuste de variables de entorno (`DB_CONNECTION`, `DB_DATABASE`).
 
 ---
+
+## [Fase 2 y 3] Estructura, Autenticación y Seguridad - *Completado*
+**Fecha:** 03 de Febrero de 2026
+
+Implementación de la estructura del proyecto, configuración de autenticación y sistema de roles/permisos.
+
+### Cambios Realizados:
+- **Estructura de Directorios**: Creación de carpetas `Controllers/Web` y `Controllers/Api` para separación lógica.
+- **Rutas**:
+    - **Web**: Separación en grupos `public` y `middleware(['auth', 'verified'])`.
+    - **API**: Instalación de Laravel Sanctum y configuración de `routes/api.php` con middleware `auth:sanctum`.
+- **Autenticación**:
+    - Integración con el stack existente (Inertia + Fortify).
+    - Añadido trait `HasApiTokens` al modelo `User`.
+- **Roles y Permisos**:
+    - Creación de `RolesAndPermissionsSeeder` con roles: `admin`, `manager`, `teacher`, `student`, `api_client`.
+    - Definición de permisos básicos (`manage courses`, etc.).
+    - Creación de usuarios de prueba (Admin y Manager) en el seeder.
+- **Políticas (Policies)**:
+    - Creación de `CoursePolicy` y `EnrollmentPolicy` con lógica de autorización basada en roles.
+
+---

@@ -13,21 +13,21 @@ Establecimiento del núcleo del sistema.
 - [x] Instalar y configurar Spatie MediaLibrary.
 - [x] Sembrar base de datos (Admin inicial y roles).
 
-## 🔲 Fase 2: Estructura y Andamiaje
+## ✅ Fase 2: Estructura y Andamiaje (Completado)
 Organización del código y sistema de autenticación.
-- [ ] Crear estructura de carpetas (`Web/`, `Api/` controllers, `Livewire/`).
-- [ ] Instalar Laravel Breeze o Jetstream para autenticación base.
+- [x] Crear estructura de carpetas (`Web/`, `Api/` controllers, `Livewire/`).
+- [x] Integrar Autenticación (Inertia + Fortify stack existente).
 
-## 🔲 Fase 3: Roles, Permisos y Políticas
+## ✅ Fase 3: Roles, Permisos y Políticas (Completado)
 Control de acceso y seguridad lógica.
-- [ ] Configurar los 5 roles: `admin`, `manager`, `teacher`, `student`, `api_client`.
-- [ ] Definir permisos específicos (ej: `manage courses`).
-- [ ] Crear `CoursePolicy` y `EnrollmentPolicy` con lógica real.
+- [x] Configurar los 5 roles: `admin`, `manager`, `teacher`, `student`, `api_client`.
+- [x] Definir permisos específicos (ej: `manage courses`).
+- [x] Crear `CoursePolicy` y `EnrollmentPolicy` con lógica real.
 
-## 🔲 Fase 4: Rutas (Públicas y Privadas)
+## ✅ Fase 4: Rutas (Públicas y Privadas) (Completado)
 Definición de los puntos de entrada de la aplicación web.
-- [ ] Definir rutas públicas (Home, Catálogo, Contacto).
-- [ ] Definir rutas privadas con middleware `auth` y organización por prefijos.
+- [x] Definir rutas públicas (Home, Catálogo, Contacto).
+- [x] Definir rutas privadas con middleware `auth` y organización por prefijos.
 
 ## 🔲 Fase 5: API REST
 Desarrollo de la API para consumo externo o aplicaciones móviles.
