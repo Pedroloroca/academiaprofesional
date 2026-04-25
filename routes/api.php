@@ -9,4 +9,5 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::apiResource('courses', \App\Http\Controllers\Api\CourseController::class);
+    Route::apiResource('teachers', \App\Http\Controllers\Api\TeacherController::class);
 });

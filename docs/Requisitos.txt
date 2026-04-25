@@ -1,0 +1,39 @@
+Contenidos mínimos a desarrollar en el proyecto:
+En caso de usar IA para el desarrollo de la aplicación, las cantidades a desarrollar serán
+multiplicadas por 2.5(dado que esta vez la haré con IA todo estará en 2.5x)
+
+1. Debe tener una parte pública y otra privada. La parte pública se accede sin
+autenticación.
+2. Las rutas deberán estar ordenadas
+3. Desarrollar roles (y/o permisos). Dos roles. Opción: Laravel-permission.
+4. Desarrollar dos políticas de acceso (policies) con contenido.
+5. Desarrollar en paralelo una API. Tres modelos con 2 CRUDs completos. Uno de
+ellos requerirá autenticación.
+6. Añadir tres comandos. Uno de ellos se llamará desde el código.
+7. Añadir dos eventos y dos listeners asociados.
+8. Añadir dos job. Y uno usará colas.
+9. Enviar dos emails.
+10.Usar tres clases de Livewire. Dos serán CRUDs
+11.Usar Pest (Cobertura al menos del 85%)
+12.Uso de traducciones. Dos idiomas.
+13.Definición y uso de componentes para las vistas. Input, Fechas, Select, labels,
+checkbox.
+14. Generación de 2 PDFs (laravel-dompdf) siendo uno complejo
+15. Trabajar con FormRequest. Todos los formularios que tengan más de dos
+campos.
+16.Usar tres scopes (pueden ser locales y/o globales). Dos de ellos complejos.
+17.Debe haber relaciones 1:n y n:n (de estas últimas tiene que haber una con
+columnas especiales en la tabla pivote). Esas columnas deben ser manejadas
+desde el código.
+18. Generar documentación funcional de la API.
+19.Usar GIT
+
+Posibles contenidos adicionales (en caso de sobrar tiempo para subir nota):
+1. Usar la librería laravel-Excel
+2. Enviar otro tipo de notificaciones (Telegram)
+3. Implementar PayPal
+4. Implementar Reglas de Validación personalizadas
+5. Usar softdeletes
+6. Cambio de idioma en tiempo real
+7. Uso de un editor wysiwyg (ckeditor, trix, …)
+8. Uso de drag and drop para la subida de archivos (dropzone)

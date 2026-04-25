@@ -21,8 +21,16 @@ class CoursePolicy
      */
     public function view(?User $user, Course $course): bool
     {
-        // Public view logic if course is published, otherwise auth check
-        return true; 
+        // Cursos publicados son accesibles por cualquiera (incluso sin sesión)
+        if ($course->status === 'published') {
+            return true;
+        }
+
+        // Borradores y archivados: solo admin, manager o el profesor propietario
+        return $user && (
+            $user->hasRole(['admin', 'manager']) ||
+            ($user->hasRole('teacher') && $user->teacher && $course->teacher_id === $user->teacher->id)
+        );
     }
 
     /**
@@ -38,8 +46,8 @@ class CoursePolicy
      */
     public function update(User $user, Course $course): bool
     {
-        return $user->hasRole(['admin', 'manager']) || 
-               ($user->hasRole('teacher') && $course->teacher_id === $user->teacher->id); // Assuming teacher relation exists or check user id
+        return $user->hasRole(['admin', 'manager']) ||
+               ($user->hasRole('teacher') && $user->teacher && $course->teacher_id === $user->teacher->id);
     }
 
     /**
