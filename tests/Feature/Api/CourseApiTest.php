@@ -1,37 +1,107 @@
 <?php
 
-use App\Models\User;
 use App\Models\Course;
+use App\Models\Teacher;
+use App\Models\User;
 use Laravel\Sanctum\Sanctum;
 
-uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
-
-test('public users cannot create courses', function () {
-    $response = $this->postJson('/api/courses', [
-        'title' => 'New Course',
-    ]);
-
-    $response->assertUnauthorized();
+beforeEach(function () {
+    $this->seed(\Database\Seeders\RolesAndPermissionsSeeder::class);
 });
 
-test('admin can create courses', function () {
-    $this->seed(); // Roles
+// ── INDEX ────────────────────────────────────────────────────────────────────
+
+test('unauthenticated user cannot list courses', function () {
+    $this->getJson('/api/courses')->assertUnauthorized();
+});
+
+test('authenticated user can list courses', function () {
     $admin = User::where('email', 'admin@admin.com')->first();
-    
-    Sanctum::actingAs($admin, ['*']);
+    Sanctum::actingAs($admin);
 
-    // Create a teacher for the course
-    $teacher = User::factory()->create();
-    $teacherProfile = \App\Models\Teacher::factory()->create(['user_id' => $teacher->id]);
+    $this->getJson('/api/courses')->assertOk();
+});
 
-    $response = $this->postJson('/api/courses', [
-        'title' => 'New Course',
-        'description' => 'Course Description',
-        'price' => 99.99,
-        'teacher_id' => $teacherProfile->id,
+// ── STORE ────────────────────────────────────────────────────────────────────
+
+test('unauthenticated user cannot create a course', function () {
+    $this->postJson('/api/courses', [])->assertUnauthorized();
+});
+
+test('admin can create a course with valid data', function () {
+    $admin = User::where('email', 'admin@admin.com')->first();
+    Sanctum::actingAs($admin);
+
+    $teacher = Teacher::factory()->create([
+        'user_id' => User::factory()->create()->id,
     ]);
 
-    // Expect 201 Created
-    $response->assertCreated();
-    $this->assertDatabaseHas('courses', ['title' => 'New Course']);
+    $this->postJson('/api/courses', [
+        'title'       => 'Curso de Laravel',
+        'description' => 'Aprende Laravel desde cero',
+        'price'       => 49.99,
+        'teacher_id'  => $teacher->id,
+    ])
+        ->assertCreated()
+        ->assertJsonFragment(['title' => 'Curso de Laravel']);
+
+    $this->assertDatabaseHas('courses', ['title' => 'Curso de Laravel']);
+});
+
+test('creating a course fails with missing required fields', function () {
+    $admin = User::where('email', 'admin@admin.com')->first();
+    Sanctum::actingAs($admin);
+
+    $this->postJson('/api/courses', [])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors(['title', 'description', 'price', 'teacher_id']);
+});
+
+// ── SHOW ─────────────────────────────────────────────────────────────────────
+
+test('authenticated user can view a course', function () {
+    $admin = User::where('email', 'admin@admin.com')->first();
+    Sanctum::actingAs($admin);
+
+    $teacher = Teacher::factory()->create(['user_id' => User::factory()->create()->id]);
+    $course  = Course::factory()->create(['teacher_id' => $teacher->id]);
+
+    $this->getJson("/api/courses/{$course->id}")
+        ->assertOk()
+        ->assertJsonFragment(['id' => $course->id]);
+});
+
+test('requesting a non-existent course returns 404', function () {
+    $admin = User::where('email', 'admin@admin.com')->first();
+    Sanctum::actingAs($admin);
+
+    $this->getJson('/api/courses/99999')->assertNotFound();
+});
+
+// ── UPDATE ───────────────────────────────────────────────────────────────────
+
+test('admin can update a course', function () {
+    $admin = User::where('email', 'admin@admin.com')->first();
+    Sanctum::actingAs($admin);
+
+    $teacher = Teacher::factory()->create(['user_id' => User::factory()->create()->id]);
+    $course  = Course::factory()->create(['teacher_id' => $teacher->id]);
+
+    $this->putJson("/api/courses/{$course->id}", ['title' => 'Título actualizado'])
+        ->assertOk()
+        ->assertJsonFragment(['title' => 'Título actualizado']);
+});
+
+// ── DESTROY ──────────────────────────────────────────────────────────────────
+
+test('admin can delete a course', function () {
+    $admin = User::where('email', 'admin@admin.com')->first();
+    Sanctum::actingAs($admin);
+
+    $teacher = Teacher::factory()->create(['user_id' => User::factory()->create()->id]);
+    $course  = Course::factory()->create(['teacher_id' => $teacher->id]);
+
+    $this->deleteJson("/api/courses/{$course->id}")->assertNoContent();
+
+    $this->assertDatabaseMissing('courses', ['id' => $course->id]);
 });

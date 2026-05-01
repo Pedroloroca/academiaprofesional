@@ -71,7 +71,13 @@ Internacionalización del sistema.
 - [ ] Configurar soporte para 5 idiomas (`es`, `en`, `fr`, `de`, `it`).
 - [ ] Externalizar cadenas de texto en archivos de recursos.
 
-## 🔲 Fase 13: Testing
+## ✅ Fase 13: Testing (En progreso)
 Aseguramiento de calidad.
-- [ ] Configurar framework Pest.
-- [ ] Escribir tests unitarios y de características ("feature") alcanzando >85% de cobertura.
+- [x] Configurar framework Pest y base de datos de testing.
+- [x] Reorganizar tests por categorías: `Api`, `Web` (Auth, Settings, General), `Authorization`.
+- [x] Corregir tests pre-existentes del starter kit (rutas, CSRF, redirecciones).
+- [/] Alcanzar >85% de cobertura (Actual: ~30-40% cubriendo APIs y Authorization).
+
+---
+
+**Nota:** Se ha realizado una auditoría completa de las Fases 1-4 corrigiendo errores críticos en modelos, policies y rutas. Ver `docs/correcciones.md` para más detalle.
