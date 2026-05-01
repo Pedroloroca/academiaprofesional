@@ -29,11 +29,11 @@ Definición de los puntos de entrada de la aplicación web.
 - [x] Definir rutas públicas (Home, Catálogo, Contacto).
 - [x] Definir rutas privadas con middleware `auth` y organización por prefijos.
 
-## 🔲 Fase 5: API REST
+## ✅ Fase 5: API REST (Completado)
 Desarrollo de la API para consumo externo o aplicaciones móviles.
-- [ ] Implementar 5 controladores CRUD (Course, Student, Teacher, Lesson, Enrollment).
-- [ ] Configurar Laravel Sanctum para autenticación por tokens.
-- [ ] Generar documentación funcional de endpoints.
+- [x] Implementar 5 controladores CRUD (Course, Student, Teacher, Lesson, Enrollment).
+- [x] Configurar Laravel Sanctum para autenticación por tokens.
+- [x] Generar documentación funcional de endpoints.
 
 ## 🔲 Fase 6: Lógica de Negocio y Validación
 Refinamiento de la calidad de datos y consultas complejas.
