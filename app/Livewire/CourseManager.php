@@ -10,6 +10,7 @@ class CourseManager extends Component
 {
     public $courses, $teachers;
     public $course_id, $title, $description, $price, $teacher_id, $status;
+    public $is_classroom = false, $schedule, $classroom_pass_code, $scope = 'profesional';
     public $isOpen = false;
 
     public function mount()
@@ -48,6 +49,10 @@ class CourseManager extends Component
         $this->price = '';
         $this->teacher_id = '';
         $this->status = 'draft';
+        $this->is_classroom = false;
+        $this->schedule = '';
+        $this->classroom_pass_code = '';
+        $this->scope = 'profesional';
     }
 
     public function store()
@@ -58,6 +63,10 @@ class CourseManager extends Component
             'price' => 'required|numeric',
             'teacher_id' => 'required|exists:teachers,id',
             'status' => 'required|in:draft,published,archived',
+            'is_classroom' => 'boolean',
+            'schedule' => 'nullable|string',
+            'classroom_pass_code' => 'nullable|string',
+            'scope' => 'required|in:profesional,escolar',
         ]);
 
         $isNew = !$this->course_id;
@@ -70,6 +79,10 @@ class CourseManager extends Component
             'price' => $this->price,
             'teacher_id' => $this->teacher_id,
             'status' => $this->status,
+            'is_classroom' => $this->is_classroom,
+            'schedule' => $this->schedule,
+            'classroom_pass_code' => $this->classroom_pass_code,
+            'scope' => $this->scope,
         ]);
 
         // 1. Dispatch CoursePublished event
@@ -100,6 +113,10 @@ class CourseManager extends Component
         $this->price = $course->price;
         $this->teacher_id = $course->teacher_id;
         $this->status = $course->status;
+        $this->is_classroom = $course->is_classroom;
+        $this->schedule = $course->schedule;
+        $this->classroom_pass_code = $course->classroom_pass_code;
+        $this->scope = $course->scope ?: 'profesional';
         $this->openModal();
     }
 

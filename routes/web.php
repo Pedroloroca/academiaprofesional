@@ -16,7 +16,8 @@ Route::name('public.')->group(function () {
     Route::get('/', HomePage::class)->name('home');
     
     // Livewire Public Routes
-    Route::get('/catalogo', PublicCatalog::class)->name('catalog');
+    Route::get('/catalogo', \App\Livewire\CatalogSelector::class)->name('catalog.selector');
+    Route::get('/catalogo/{scope}', PublicCatalog::class)->name('catalog');
     Route::get('/profesores', TeacherDirectory::class)->name('teachers');
 });
 

@@ -1,27 +1,26 @@
 @extends('layouts.livewire')
 
 @section('content')
-<div class="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-50">
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Registrar nueva cuenta
+<div class="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-50/50">
+    <div class="sm:mx-auto sm:w-full sm:max-w-md select-none">
+        <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 tracking-tight">
+            Crear cuenta
         </h2>
+        <p class="text-center text-sm text-gray-500 mt-2">Únete hoy a la academia y empieza a aprender</p>
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div class="bg-white py-10 px-6 shadow-xl border border-gray-100 rounded-3xl sm:px-12 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 h-32 w-32 bg-indigo-50/60 rounded-full blur-2xl pointer-events-none select-none"></div>
+
             @if ($errors->any())
-                <div class="mb-4 bg-red-50 border-l-4 border-red-400 p-4">
-                    <div class="flex">
-                        <div class="ml-3">
-                            <h3 class="text-sm font-medium text-red-800">Error al registrarse:</h3>
-                            <ul class="mt-1 text-sm text-red-700 list-disc list-inside">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
+                <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-xl shadow-sm">
+                    <h3 class="text-sm font-extrabold text-red-800">Error al registrarse:</h3>
+                    <ul class="mt-1 text-sm text-red-700 list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
 
@@ -29,59 +28,52 @@
                 @csrf
 
                 <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">
+                    <label for="name" class="block text-sm font-extrabold text-gray-700 select-none">
                         Nombre completo
                     </label>
-                    <div class="mt-1">
-                        <x-ui.input id="name" name="name" type="text" autocomplete="name" required autofocus />
+                    <div class="mt-2">
+                        <x-ui.input id="name" name="name" type="text" autocomplete="name" required autofocus class="rounded-xl border-gray-200" placeholder="Ej: Pedro Loroca" />
                     </div>
                 </div>
 
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">
+                    <label for="email" class="block text-sm font-extrabold text-gray-700 select-none">
                         Correo electrónico
                     </label>
-                    <div class="mt-1">
-                        <x-ui.input id="email" name="email" type="email" autocomplete="email" required />
+                    <div class="mt-2">
+                        <x-ui.input id="email" name="email" type="email" autocomplete="email" required class="rounded-xl border-gray-200" placeholder="correo@ejemplo.com" />
                     </div>
                 </div>
 
                 <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700">
+                    <label for="password" class="block text-sm font-extrabold text-gray-700 select-none">
                         Contraseña
                     </label>
-                    <div class="mt-1">
-                        <x-ui.input id="password" name="password" type="password" autocomplete="new-password" required />
+                    <div class="mt-2">
+                        <x-ui.input id="password" name="password" type="password" autocomplete="new-password" required class="rounded-xl border-gray-200" placeholder="••••••••" />
                     </div>
                 </div>
                 
                 <div>
-                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700">
+                    <label for="password_confirmation" class="block text-sm font-extrabold text-gray-700 select-none">
                         Confirmar contraseña
                     </label>
-                    <div class="mt-1">
-                        <x-ui.input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required />
+                    <div class="mt-2">
+                        <x-ui.input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required class="rounded-xl border-gray-200" placeholder="••••••••" />
                     </div>
                 </div>
 
-                <div>
-                    <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Registrarse
+                <div class="pt-2">
+                    <button type="submit" class="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-base font-black text-white bg-indigo-600 hover:bg-indigo-700 transition-all duration-200 tracking-wide select-none">
+                        Registrar mi cuenta
                     </button>
                 </div>
             </form>
 
-            <div class="mt-6">
-                <div class="relative">
-                    <div class="absolute inset-0 flex items-center">
-                        <div class="w-full border-t border-gray-300"></div>
-                    </div>
-                    <div class="relative flex justify-center text-sm">
-                        <span class="px-2 bg-white text-gray-500">
-                            ¿Ya tienes cuenta? <a href="{{ route('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500">Inicia sesión</a>
-                        </span>
-                    </div>
-                </div>
+            <div class="mt-8 border-t border-gray-100 pt-6">
+                <p class="text-center text-sm text-gray-500 select-none">
+                    ¿Ya tienes cuenta? <a href="{{ route('login') }}" class="font-extrabold text-indigo-600 hover:text-indigo-500">Inicia sesión</a>
+                </p>
             </div>
         </div>
     </div>
