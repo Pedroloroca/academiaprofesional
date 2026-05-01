@@ -26,6 +26,19 @@ class LessonViewer extends Component
         $this->activeLesson = $this->course->lessons->firstWhere('id', $lessonId);
     }
 
+    public function completeLesson($lessonId)
+    {
+        $lesson = \App\Models\Lesson::find($lessonId);
+        if ($lesson) {
+            event(new \App\Events\LessonCompleted($lesson, auth()->user()));
+
+            // Recalculate global student grade via sync Job
+            \App\Jobs\CalculateStudentGPA::dispatch(auth()->user());
+
+            session()->flash('message', '¡Lección completada con éxito!');
+        }
+    }
+
     public function render()
     {
         return view('livewire.lesson-viewer')->layout('layouts.livewire');

@@ -45,11 +45,11 @@ Implementación de la interfaz dinámica.
 - [x] Crear 7 componentes Livewire (incluyendo 2 CRUDs completos).
 - [x] Crear componentes Blade reutilizables (Input, fechas, selects).
 
-## 🔲 Fase 8: Eventos y Procesos Asíncronos
+## ✅ Fase 8: Eventos y Procesos Asíncronos (Completado)
 Automatización de flujos de trabajo.
-- [ ] Crear Eventos (`StudentEnrolled`, `PaymentCompleted`).
-- [ ] Crear Listeners (`SendEmail`, `GeneratePDF`).
-- [ ] Implementar 5 Jobs (2 en cola Redis/Database).
+- [x] Crear Eventos (`StudentEnrolled`, `PaymentReceived`, etc.).
+- [x] Crear Listeners (`SendWelcomeEmail`, etc.).
+- [x] Implementar 5 Jobs (3 en cola, 2 síncronos).
 
 ## 🔲 Fase 9: Comandos de Consola
 Herramientas de mantenimiento y automatización interna.

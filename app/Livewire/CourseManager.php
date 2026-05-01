@@ -60,7 +60,10 @@ class CourseManager extends Component
             'status' => 'required|in:draft,published,archived',
         ]);
 
-        Course::updateOrCreate(['id' => $this->course_id], [
+        $isNew = !$this->course_id;
+        $oldCourse = $this->course_id ? Course::find($this->course_id) : null;
+
+        $course = Course::updateOrCreate(['id' => $this->course_id], [
             'title' => $this->title,
             'slug' => \Illuminate\Support\Str::slug($this->title) . '-' . uniqid(),
             'description' => $this->description,
@@ -68,6 +71,19 @@ class CourseManager extends Component
             'teacher_id' => $this->teacher_id,
             'status' => $this->status,
         ]);
+
+        // 1. Dispatch CoursePublished event
+        if ($course->status === 'published' && (!$oldCourse || $oldCourse->status !== 'published')) {
+            event(new \App\Events\CoursePublished($course));
+        }
+
+        // 2. Dispatch TeacherAssigned event
+        if ($isNew || ($oldCourse && $oldCourse->teacher_id != $course->teacher_id)) {
+            $teacher = \App\Models\Teacher::find($course->teacher_id);
+            if ($teacher && $teacher->user) {
+                event(new \App\Events\TeacherAssigned($course, $teacher->user));
+            }
+        }
 
         session()->flash('message', $this->course_id ? 'Course Updated Successfully.' : 'Course Created Successfully.');
 

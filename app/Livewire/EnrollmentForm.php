@@ -35,6 +35,19 @@ class EnrollmentForm extends Component
             'enrolled_at' => now(),
         ]);
 
+        $enrollment = \App\Models\Enrollment::where('student_id', $student->id)
+            ->where('course_id', $this->course->id)
+            ->first();
+
+        if ($enrollment) {
+            // Dispatch Events
+            event(new \App\Events\StudentEnrolled($enrollment));
+            event(new \App\Events\PaymentReceived($enrollment));
+        }
+
+        // Dispatch sync job to update course stats
+        \App\Jobs\UpdateCourseStats::dispatch($this->course);
+
         session()->flash('message', 'Matriculación completada con éxito.');
         $this->student_id = '';
     }

@@ -5,70 +5,93 @@ Registro de cambios y progreso del desarrollo de Academia Profesional.
 ## [Fase 1] Base de Datos y Fundamentos - *Completado*
 **Fecha:** 18 de Enero de 2026
 
-Se ha establecido la base s贸lida del sistema, incluyendo el esquema de base de datos, modelos Eloquent y configuraci贸n de librer铆as esenciales.
+Se ha establecido la base s脙鲁lida del sistema, incluyendo el esquema de base de datos, modelos Eloquent y configuraci脙鲁n de librer脙颅as esenciales.
 
 ### Cambios Realizados:
-- **Dise帽o de Base de Datos**: Definici贸n de esquema relacional para Usuarios, Profesores, Estudiantes, Cursos, Lecciones, Matr铆culas y Pagos.
+- **Dise脙卤o de Base de Datos**: Definici脙鲁n de esquema relacional para Usuarios, Profesores, Estudiantes, Cursos, Lecciones, Matr脙颅culas y Pagos.
 - **Migraciones**:
-    - Creaci贸n de tablas personalizadas: `teachers`, `students`, `courses`, `lessons`, `enrollments`, `payments`.
-    - Integraci贸n de tablas de librer铆as: `roles`, `permissions`, `media`.
+    - Creaci脙鲁n de tablas personalizadas: `teachers`, `students`, `courses`, `lessons`, `enrollments`, `payments`.
+    - Integraci脙鲁n de tablas de librer脙颅as: `roles`, `permissions`, `media`.
 - **Modelos Eloquent**:
-    - Implementaci贸n de relaciones (1:1, 1:N, N:M).
-    - Configuraci贸n de atributos `fillable` y `casts`.
-    - Integraci贸n de Traits:
+    - Implementaci脙鲁n de relaciones (1:1, 1:N, N:M).
+    - Configuraci脙鲁n de atributos `fillable` y `casts`.
+    - Integraci脙鲁n de Traits:
         - `HasRoles` (Spatie) en `User`.
         - `InteractsWithMedia` (Spatie) en `User`, `Course`, `Lesson`.
-- **Factories**: Generaci贸n de f谩bricas para todos los modelos para facilitar el testing y seeding.
-- **Librer铆as**:
-    - Instalaci贸n y configuraci贸n de `spatie/laravel-permission`.
-    - Instalaci贸n y configuraci贸n de `spatie/laravel-medialibrary`.
-    - Publicaci贸n de archivos de configuraci贸n y assets.
-- **Configuraci贸n**: Ajuste de variables de entorno (`DB_CONNECTION`, `DB_DATABASE`).
+- **Factories**: Generaci脙鲁n de f脙隆bricas para todos los modelos para facilitar el testing y seeding.
+- **Librer脙颅as**:
+    - Instalaci脙鲁n y configuraci脙鲁n de `spatie/laravel-permission`.
+    - Instalaci脙鲁n y configuraci脙鲁n de `spatie/laravel-medialibrary`.
+    - Publicaci脙鲁n de archivos de configuraci脙鲁n y assets.
+- **Configuraci脙鲁n**: Ajuste de variables de entorno (`DB_CONNECTION`, `DB_DATABASE`).
 
 ---
 
-## [Fase 2 y 3] Estructura, Autenticaci贸n y Seguridad - *Completado*
+## [Fase 2 y 3] Estructura, Autenticaci脙鲁n y Seguridad - *Completado*
 **Fecha:** 03 de Febrero de 2026
 
-Implementaci贸n de la estructura del proyecto, configuraci贸n de autenticaci贸n y sistema de roles/permisos.
+Implementaci脙鲁n de la estructura del proyecto, configuraci脙鲁n de autenticaci脙鲁n y sistema de roles/permisos.
 
 ### Cambios Realizados:
-- **Estructura de Directorios**: Creaci贸n de carpetas `Controllers/Web` y `Controllers/Api` para separaci贸n l贸gica.
+- **Estructura de Directorios**: Creaci脙鲁n de carpetas `Controllers/Web` y `Controllers/Api` para separaci脙鲁n l脙鲁gica.
 - **Rutas**:
-    - **Web**: Separaci贸n en grupos `public` y `middleware(['auth', 'verified'])`.
-    - **API**: Instalaci贸n de Laravel Sanctum y configuraci贸n de `routes/api.php` con middleware `auth:sanctum`.
-- **Autenticaci贸n**:
-    - Integraci贸n con el stack existente (Inertia + Fortify).
-    - A帽adido trait `HasApiTokens` al modelo `User`.
+    - **Web**: Separaci脙鲁n en grupos `public` y `middleware(['auth', 'verified'])`.
+    - **API**: Instalaci脙鲁n de Laravel Sanctum y configuraci脙鲁n de `routes/api.php` con middleware `auth:sanctum`.
+- **Autenticaci脙鲁n**:
+    - Integraci脙鲁n con el stack existente (Inertia + Fortify).
+    - A脙卤adido trait `HasApiTokens` al modelo `User`.
 - **Roles y Permisos**:
-    - Creaci贸n de `RolesAndPermissionsSeeder` con roles: `admin`, `manager`, `teacher`, `student`, `api_client`.
-    - Definici贸n de permisos b谩sicos (`manage courses`, etc.).
-    - Creaci贸n de usuarios de prueba (Admin y Manager) en el seeder.
-- **Pol铆ticas (Policies)**:
-    - Creaci贸n de `CoursePolicy` y `EnrollmentPolicy` con l贸gica de autorizaci贸n basada en roles.
+    - Creaci脙鲁n de `RolesAndPermissionsSeeder` con roles: `admin`, `manager`, `teacher`, `student`, `api_client`.
+    - Definici脙鲁n de permisos b脙隆sicos (`manage courses`, etc.).
+    - Creaci脙鲁n de usuarios de prueba (Admin y Manager) en el seeder.
+- **Pol脙颅ticas (Policies)**:
+    - Creaci脙鲁n de `CoursePolicy` y `EnrollmentPolicy` con l脙鲁gica de autorizaci脙鲁n basada en roles.
 
 ---
 
-## [Fase 4 - Revisi髇] Auditor韆 T閏nica y Refactorizaci髇 de Testing
+## [Fase 4 - Revisi贸n] Auditor铆a T茅cnica y Refactorizaci贸n de Testing
 **Fecha:** 25 de Abril de 2026
 
-Auditor韆 completa de las fases 1-4, correcci髇 de errores cr韙icos en arquitectura y puesta en marcha de un entorno de pruebas robusto con Pest.
+Auditor铆a completa de las fases 1-4, correcci贸n de errores cr铆ticos en arquitectura y puesta en marcha de un entorno de pruebas robusto con Pest.
 
 ### Cambios Realizados:
-- **Auditor韆 de Modelos**:
+- **Auditor铆a de Modelos**:
     - Corregido modelo Enrollment (cambiado de Pivot a Model) para habilitar Factories.
-    - A馻dido trait HasFactory en Lesson y Payment.
-- **Seguridad y Autorizaci髇**:
+    - A帽adido trait HasFactory en Lesson y Payment.
+- **Seguridad y Autorizaci贸n**:
     - Registro de CoursePolicy y EnrollmentPolicy en AppServiceProvider.
-    - Refactorizaci髇 de l骻ica en CoursePolicy (null-checks y visibilidad p鷅lica).
+    - Refactorizaci贸n de l贸gica en CoursePolicy (null-checks y visibilidad p煤blica).
 - **Rutas API**:
     - Registrada ruta para TeacherController en api.php.
 - **Datos de Demo**:
-    - Creaci髇 de DemoDataSeeder para poblar el sistema con datos reales de prueba.
+    - Creaci贸n de DemoDataSeeder para poblar el sistema con datos reales de prueba.
 - **Entorno de Testing (Pest)**:
-    - Creaci髇 de base de datos de testing academiaprofesional_testing.
-    - Reorganizaci髇 total de tests en carpetas: Api, Web (Auth, Settings, General) y Authorization.
-    - Correcci髇 de tests de boilerplate (rutas public.home, CSRF y aserciones de Fortify).
-    - Verificaci髇 de 69 tests pasando al 100%.
+    - Creaci贸n de base de datos de testing academiaprofesional_testing.
+    - Reorganizaci贸n total de tests en carpetas: Api, Web (Auth, Settings, General) y Authorization.
+    - Correcci贸n de tests de boilerplate (rutas public.home, CSRF y aserciones de Fortify).
+    - Verificaci贸n de 69 tests pasando al 100%.
 
 ---
+
+## [Fase 7 y 8] Frontend, Navegaci贸n, Blade Auth y Procesos As铆ncronos - *Completado*
+**Fecha:** 1 de Mayo de 2026
+
+Migraci贸n total del frontend de Vue a Blade Auth, eliminaci贸n de Inertia, creaci贸n de navegaci贸n y landing page, y desarrollo de l贸gica de eventos, listeners y jobs.
+
+### Cambios Realizados:
+- **Redise帽o Frontend & Navegaci贸n**:
+    - Creaci贸n del componente HomePage para landing page.
+    - Creaci贸n de barra de navegaci贸n din谩mica en Livewire.
+- **Migraci贸n a Blade Auth**:
+    - Eliminaci贸n completa de `@inertiajs/vue3` y `vue` para acelerar compilaci贸n.
+    - Eliminaci贸n de plantillas Vue y reemplazo de autenticaci贸n por vistas Blade en `/login` y `/register`.
+- **Eventos y Listeners (5 de cada uno por regla 2.5x)**:
+    - `StudentEnrolled` -> `SendWelcomeEmail`
+    - `CoursePublished` -> `NotifyStudentsAboutNewCourse`
+    - `LessonCompleted` -> `UpdateCourseProgress`
+    - `PaymentReceived` -> `GenerateInvoicePDF`
+    - `TeacherAssigned` -> `NotifyTeacherOfAssignment`
+- **Jobs de Fondo (5 en total, 3 en cola + 2 s铆ncronos)**:
+    - **Background:** `ProcessVideoUpload`, `GenerateCourseCertificate`, `BulkEmailStudents`.
+    - **S铆ncronos:** `CalculateStudentGPA`, `UpdateCourseStats`.
+
