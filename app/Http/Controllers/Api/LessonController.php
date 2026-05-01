@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Lesson\StoreLessonRequest;
+use App\Http\Requests\Lesson\UpdateLessonRequest;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -20,15 +22,9 @@ class LessonController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreLessonRequest $request)
     {
-        $validated = $request->validate([
-            'course_id' => 'required|exists:courses,id',
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'position' => 'nullable|integer',
-            'is_published' => 'boolean',
-        ]);
+        $validated = $request->validated();
 
         $validated['slug'] = Str::slug($validated['title']) . '-' . uniqid();
         $validated['is_published'] = $request->input('is_published', false);
@@ -49,16 +45,11 @@ class LessonController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateLessonRequest $request, string $id)
     {
         $lesson = Lesson::findOrFail($id);
         
-        $validated = $request->validate([
-            'title' => 'nullable|string|max:255',
-            'content' => 'nullable|string',
-            'position' => 'nullable|integer',
-            'is_published' => 'boolean',
-        ]);
+        $validated = $request->validated();
 
         if (isset($validated['title'])) {
             $validated['slug'] = Str::slug($validated['title']) . '-' . uniqid();

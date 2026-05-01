@@ -37,4 +37,16 @@ class Course extends Model implements HasMedia
                     ->withPivot('status', 'final_grade', 'enrolled_at')
                     ->withTimestamps();
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', 'published');
+    }
+
+    public function scopeWithActiveEnrollments($query)
+    {
+        return $query->whereHas('enrollments', function ($q) {
+            $q->where('status', 'active');
+        });
+    }
 }

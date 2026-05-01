@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Course\StoreCourseRequest;
+use App\Http\Requests\Course\UpdateCourseRequest;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
@@ -19,14 +21,9 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCourseRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
-            'teacher_id' => 'required|exists:teachers,id',
-        ]);
+        $validated = $request->validated();
 
         $validated['slug'] = \Illuminate\Support\Str::slug($validated['title']) . '-' . uniqid();
         $validated['status'] = 'draft';
@@ -47,10 +44,10 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCourseRequest $request, string $id)
     {
         $course = Course::findOrFail($id);
-        $course->update($request->all());
+        $course->update($request->validated());
         return response()->json($course);
     }
 

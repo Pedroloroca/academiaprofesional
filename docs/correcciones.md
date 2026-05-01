@@ -93,3 +93,14 @@ Historial de errores detectados durante la auditoría de las Fases 1–4 y cómo
 **Solución:** Se refactorizaron los tests para verificar directamente el estado de la base de datos o el estado del objeto `$user` tras la petición, eliminando aserciones de sesión/redirección frágiles que no aplicaban al stack actual.
 
 **Archivos:** `tests/Feature/Web/Settings/ProfileUpdateTest.php`, `tests/Feature/Web/Settings/PasswordUpdateTest.php`.
+
+---
+
+### ✅ C-10 — Pantalla negra en Login / Conflictos de Vue con Livewire
+
+**Problema:** Tras configurar Vite y TailwindCSS para los nuevos componentes de Livewire, la página de autenticación (`/login`) renderizada por Inertia+Vue mostraba una pantalla completamente en negro y fallaba silenciosamente, provocando además errores de desbordamiento de pila ("Maximum call stack size exceeded") al compilar con Rollup debido al árbol de dependencias del Starter Kit original.
+
+**Solución:** Se realizó una limpieza total de la arquitectura frontend eliminando `vue` e `@inertiajs/vue3` para unificar el stack tecnológico. Las vistas de autenticación de Fortify (`Login` y `Registro`) se reescribieron desde cero en puro Blade/Livewire usando los componentes de UI del proyecto, logrando tiempos de compilación instantáneos y unificación del diseño.
+
+**Archivos eliminados:** `resources/js/pages/`, `resources/views/app.blade.php`.
+**Archivos creados/modificados:** `resources/views/auth/login.blade.php`, `resources/views/auth/register.blade.php`, `app/Providers/FortifyServiceProvider.php`, `vite.config.ts`.

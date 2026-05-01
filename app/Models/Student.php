@@ -37,4 +37,18 @@ class Student extends Model
                     ->withPivot('status', 'final_grade', 'enrolled_at')
                     ->withTimestamps();
     }
+
+    public function scopeTopPerformers($query)
+    {
+        return $query->whereHas('enrollments', function ($q) {
+            $q->where('final_grade', '>=', 9.0);
+        });
+    }
+
+    public function scopeNeedsReinforcement($query)
+    {
+        return $query->whereHas('enrollments', function ($q) {
+            $q->whereNotNull('final_grade')->where('final_grade', '<=', 5.0);
+        });
+    }
 }

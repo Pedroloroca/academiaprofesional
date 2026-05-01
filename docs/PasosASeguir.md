@@ -35,15 +35,15 @@ Desarrollo de la API para consumo externo o aplicaciones móviles.
 - [x] Configurar Laravel Sanctum para autenticación por tokens.
 - [x] Generar documentación funcional de endpoints.
 
-## 🔲 Fase 6: Lógica de Negocio y Validación
+## ✅ Fase 6: Lógica de Negocio y Validación (Completado)
 Refinamiento de la calidad de datos y consultas complejas.
-- [ ] Crear FormRequests para validaciones complejas (>2 campos).
-- [ ] Implementar Scopes (ej: `scopeActive`, `scopeWithOpenEnrollments`).
+- [x] Crear FormRequests para validaciones complejas (>2 campos).
+- [x] Implementar Scopes (ej: `scopeActive`, `scopeWithOpenEnrollments`).
 
-## 🔲 Fase 7: Frontend y Livewire
+## ✅ Fase 7: Frontend y Livewire (Completado)
 Implementación de la interfaz dinámica.
-- [ ] Crear 7 componentes Livewire (incluyendo 2 CRUDs completos).
-- [ ] Crear componentes Blade reutilizables (Input, fechas, selects).
+- [x] Crear 7 componentes Livewire (incluyendo 2 CRUDs completos).
+- [x] Crear componentes Blade reutilizables (Input, fechas, selects).
 
 ## 🔲 Fase 8: Eventos y Procesos Asíncronos
 Automatización de flujos de trabajo.

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Student\StoreStudentRequest;
+use App\Http\Requests\Student\UpdateStudentRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -19,13 +21,9 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreStudentRequest $request)
     {
-        $validated = $request->validate([
-            'user_id' => 'required|exists:users,id|unique:students,user_id',
-            'date_of_birth' => 'nullable|date',
-            'address' => 'nullable|string',
-        ]);
+        $validated = $request->validated();
 
         $student = Student::create($validated);
 
@@ -43,14 +41,11 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateStudentRequest $request, string $id)
     {
         $student = Student::findOrFail($id);
         
-        $validated = $request->validate([
-            'date_of_birth' => 'nullable|date',
-            'address' => 'nullable|string',
-        ]);
+        $validated = $request->validated();
 
         $student->update($validated);
         

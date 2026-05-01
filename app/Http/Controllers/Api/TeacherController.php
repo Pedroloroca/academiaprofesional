@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Teacher\StoreTeacherRequest;
+use App\Http\Requests\Teacher\UpdateTeacherRequest;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -19,13 +21,9 @@ class TeacherController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTeacherRequest $request)
     {
-        $validated = $request->validate([
-            'user_id' => 'required|exists:users,id|unique:teachers,user_id',
-            'bio' => 'nullable|string',
-            'website_url' => 'nullable|url',
-        ]);
+        $validated = $request->validated();
 
         $teacher = Teacher::create($validated);
 
@@ -43,14 +41,11 @@ class TeacherController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateTeacherRequest $request, string $id)
     {
         $teacher = Teacher::findOrFail($id);
         
-        $validated = $request->validate([
-            'bio' => 'nullable|string',
-            'website_url' => 'nullable|url',
-        ]);
+        $validated = $request->validated();
 
         $teacher->update($validated);
         
