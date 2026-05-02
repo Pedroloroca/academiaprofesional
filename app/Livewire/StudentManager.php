@@ -9,18 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class StudentManager extends Component
 {
-    public $students;
     public $student_id, $name, $email, $password, $date_of_birth, $address;
     public $isOpen = false;
 
     public function mount()
     {
-        $this->loadStudents();
-    }
-
-    public function loadStudents()
-    {
-        $this->students = Student::with('user')->get();
     }
 
     public function create()
@@ -97,7 +90,6 @@ class StudentManager extends Component
         session()->flash('message', $this->student_id ? 'Estudiante actualizado.' : 'Estudiante creado.');
 
         $this->closeModal();
-        $this->loadStudents();
     }
 
     public function edit($id)
@@ -115,13 +107,16 @@ class StudentManager extends Component
     public function delete($id)
     {
         $student = Student::find($id);
-        $student->user->delete(); // This cascades or we can delete user which deletes student
+        if ($student && $student->user) {
+            $student->user->delete();
+        }
         session()->flash('message', 'Estudiante eliminado.');
-        $this->loadStudents();
     }
 
     public function render()
     {
-        return view('livewire.student-manager')->layout('layouts.livewire');
+        return view('livewire.student-manager', [
+            'students' => Student::with('user')->get(),
+        ])->layout('layouts.livewire');
     }
 }

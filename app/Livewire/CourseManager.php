@@ -8,52 +8,18 @@ use App\Models\Teacher;
 
 class CourseManager extends Component
 {
-    public $courses, $teachers;
     public $course_id, $title, $description, $price, $teacher_id, $status;
     public $is_classroom = false, $schedule, $classroom_pass_code, $scope = 'profesional', $explanation, $video_url;
     public $isOpen = false;
 
     public function mount()
     {
-        $this->teachers = Teacher::with('user')->get();
-        $this->loadCourses();
-    }
-
-    public function loadCourses()
-    {
-        $user = auth()->user();
-        if (!$user) {
-            $this->courses = collect();
-            return;
-        }
-
-        if ($user->hasRole('admin') || $user->hasRole('manager')) {
-            $this->courses = Course::with('teacher.user')->get();
-        } elseif ($user->hasRole('teacher')) {
-            $teacher = \App\Models\Teacher::where('user_id', $user->id)->first();
-            if ($teacher) {
-                $this->courses = Course::where('teacher_id', $teacher->id)->with('teacher.user')->get();
-            } else {
-                $this->courses = collect();
-            }
-        } elseif ($user->hasRole('student')) {
-            $student = \App\Models\Student::where('user_id', $user->id)->first();
-            if ($student) {
-                $this->courses = Course::whereHas('enrollments', function($q) use ($student) {
-                    $q->where('student_id', $student->id);
-                })->with('teacher.user')->get();
-            } else {
-                $this->courses = collect();
-            }
-        } else {
-            $this->courses = collect();
-        }
     }
 
     public function create()
     {
         $this->resetInputFields();
-        if (auth()->user()->hasRole('teacher')) {
+        if (auth()->user() && auth()->user()->hasRole('teacher')) {
             $teacher = \App\Models\Teacher::where('user_id', auth()->id())->first();
             if ($teacher) {
                 $this->teacher_id = $teacher->id;
@@ -139,7 +105,6 @@ class CourseManager extends Component
         session()->flash('message', $this->course_id ? 'Course Updated Successfully.' : 'Course Created Successfully.');
 
         $this->closeModal();
-        $this->loadCourses();
     }
 
     public function edit($id)
@@ -164,11 +129,62 @@ class CourseManager extends Component
     {
         Course::find($id)->delete();
         session()->flash('message', 'Course Deleted Successfully.');
-        $this->loadCourses();
+    }
+
+    public function restore($id)
+    {
+        $course = Course::onlyTrashed()->findOrFail($id);
+        $course->restore();
+        session()->flash('message', 'Course Restored Successfully.');
+    }
+
+    public function forceDelete($id)
+    {
+        $course = Course::onlyTrashed()->findOrFail($id);
+        $course->forceDelete();
+        session()->flash('message', 'Course Deleted Permanently.');
     }
 
     public function render()
     {
-        return view('livewire.course-manager')->layout('layouts.livewire');
+        $user = auth()->user();
+        $courses = collect();
+        $deletedCourses = collect();
+
+        $isAdminOrManager = false;
+        $isTeacher = false;
+        $isStudent = false;
+
+        if ($user) {
+            $isAdminOrManager = $user->hasRole('admin') || $user->hasRole('manager');
+            $isTeacher = $user->hasRole('teacher');
+            $isStudent = $user->hasRole('student');
+
+            if ($isAdminOrManager) {
+                $courses = Course::with('teacher.user')->get();
+                $deletedCourses = Course::onlyTrashed()->with('teacher.user')->get();
+            } elseif ($isTeacher) {
+                $teacher = \App\Models\Teacher::where('user_id', $user->id)->first();
+                if ($teacher) {
+                    $courses = Course::where('teacher_id', $teacher->id)->with('teacher.user')->get();
+                }
+            } elseif ($isStudent) {
+                $student = \App\Models\Student::where('user_id', $user->id)->first();
+                if ($student) {
+                    $courses = Course::whereHas('enrollments', function($q) use ($student) {
+                        $q->where('student_id', $student->id);
+                    })->with('teacher.user')->get();
+                }
+            }
+        }
+
+        return view('livewire.course-manager', [
+            'courses' => $courses,
+            'deletedCourses' => $deletedCourses,
+            'teachers' => Teacher::with('user')->get(),
+            'isAdminOrManager' => $isAdminOrManager,
+            'isTeacher' => $isTeacher,
+            'isStudent' => $isStudent,
+        ])->layout('layouts.livewire');
     }
 }

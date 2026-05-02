@@ -8,10 +8,11 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Course extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia, SoftDeletes;
     
     protected $fillable = ['teacher_id', 'title', 'slug', 'description', 'price', 'status', 'is_classroom', 'schedule', 'classroom_pass_code', 'scope', 'explanation', 'video_url'];
 

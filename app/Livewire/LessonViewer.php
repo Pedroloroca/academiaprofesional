@@ -8,8 +8,8 @@ use App\Models\Lesson;
 
 class LessonViewer extends Component
 {
-    public $course;
-    public $activeLesson = null;
+    public $course_slug;
+    public $active_lesson_id = null;
     
     // Toggles and check flags
     public $editMode = false;
@@ -34,62 +34,65 @@ class LessonViewer extends Component
 
     public function mount($slug)
     {
+        $this->course_slug = $slug;
         $this->loadCourseData($slug);
     }
 
     public function loadCourseData($slug)
     {
         $user = auth()->user();
-        
-        $this->course = Course::where('slug', $slug)->firstOrFail();
+        $course = Course::where('slug', $slug)->firstOrFail();
 
         // If user is admin/manager or the course's teacher, load all lessons (published and unpublished)
-        if ($user && ($user->hasRole('admin') || $user->hasRole('manager') || ($user->hasRole('teacher') && $this->course->teacher->user_id === $user->id))) {
+        if ($user && ($user->hasRole('admin') || $user->hasRole('manager') || ($user->hasRole('teacher') && $course->teacher->user_id === $user->id))) {
             $this->isTeacherOrAdmin = true;
             $this->editMode = true; // default on edit mode for teachers
             
             // Reload with all lessons
-            $this->course = Course::with(['lessons' => function($q) {
+            $course = Course::with(['lessons' => function($q) {
                 $q->orderBy('position');
             }])->where('slug', $slug)->firstOrFail();
         } else {
             // Load only published lessons for students
-            $this->course = Course::with(['lessons' => function($q) {
+            $course = Course::with(['lessons' => function($q) {
                 $q->where('is_published', true)->orderBy('position');
             }])->where('slug', $slug)->firstOrFail();
         }
 
         // Fill course level fields
-        $this->course_id = $this->course->id;
-        $this->courseTitle = $this->course->title;
-        $this->courseDescription = $this->course->description;
-        $this->courseExplanation = $this->course->explanation;
-        $this->courseVideoUrl = $this->course->video_url;
+        $this->course_id = $course->id;
+        $this->courseTitle = $course->title;
+        $this->courseDescription = $course->description;
+        $this->courseExplanation = $course->explanation;
+        $this->courseVideoUrl = $course->video_url;
 
-        if ($this->course->lessons->isNotEmpty()) {
-            if (!$this->activeLesson) {
-                $this->activeLesson = $this->course->lessons->first();
+        if ($course->lessons->isNotEmpty()) {
+            if (!$this->active_lesson_id) {
+                $activeLesson = $course->lessons->first();
+                $this->active_lesson_id = $activeLesson->id;
             } else {
-                $this->activeLesson = $this->course->lessons->firstWhere('id', $this->activeLesson->id) ?: $this->course->lessons->first();
+                $activeLesson = $course->lessons->firstWhere('id', $this->active_lesson_id) ?: $course->lessons->first();
+                $this->active_lesson_id = $activeLesson->id;
             }
-            $this->loadLessonFields();
+            $this->loadLessonFields($activeLesson);
         }
     }
 
-    public function loadLessonFields()
+    public function loadLessonFields($lesson)
     {
-        if ($this->activeLesson) {
-            $this->active_lesson_title = $this->activeLesson->title;
-            $this->active_lesson_content = $this->activeLesson->content;
-            $this->active_lesson_is_published = (bool)$this->activeLesson->is_published;
-            $this->active_lesson_video_url = $this->activeLesson->video_url;
+        if ($lesson) {
+            $this->active_lesson_title = $lesson->title;
+            $this->active_lesson_content = $lesson->content;
+            $this->active_lesson_is_published = (bool)$lesson->is_published;
+            $this->active_lesson_video_url = $lesson->video_url;
         }
     }
 
     public function selectLesson($lessonId)
     {
-        $this->activeLesson = $this->course->lessons->firstWhere('id', $lessonId);
-        $this->loadLessonFields();
+        $this->active_lesson_id = $lessonId;
+        $lesson = Lesson::find($lessonId);
+        $this->loadLessonFields($lesson);
     }
 
     public function toggleEditMode()
@@ -117,7 +120,8 @@ class LessonViewer extends Component
             'courseDescription' => 'required',
         ]);
 
-        $this->course->update([
+        $course = Course::findOrFail($this->course_id);
+        $course->update([
             'title' => $this->courseTitle,
             'description' => $this->courseDescription,
             'explanation' => $this->courseExplanation,
@@ -125,19 +129,20 @@ class LessonViewer extends Component
         ]);
 
         session()->flash('course_message', 'Curso actualizado correctamente.');
-        $this->loadCourseData($this->course->slug);
+        $this->loadCourseData($this->course_slug);
     }
 
     public function updateLesson()
     {
-        if (!$this->activeLesson) return;
+        if (!$this->active_lesson_id) return;
 
         $this->validate([
             'active_lesson_title' => 'required',
             'active_lesson_content' => 'required',
         ]);
 
-        $this->activeLesson->update([
+        $lesson = Lesson::findOrFail($this->active_lesson_id);
+        $lesson->update([
             'title' => $this->active_lesson_title,
             'content' => $this->active_lesson_content,
             'is_published' => $this->active_lesson_is_published,
@@ -145,7 +150,7 @@ class LessonViewer extends Component
         ]);
 
         session()->flash('lesson_message', 'Lección actualizada correctamente.');
-        $this->loadCourseData($this->course->slug);
+        $this->loadCourseData($this->course_slug);
     }
 
     public function addLesson()
@@ -155,7 +160,8 @@ class LessonViewer extends Component
             'new_lesson_content' => 'required',
         ]);
 
-        $this->course->lessons()->create([
+        $course = Course::findOrFail($this->course_id);
+        $course->lessons()->create([
             'title' => $this->new_lesson_title,
             'slug' => \Illuminate\Support\Str::slug($this->new_lesson_title) . '-' . uniqid(),
             'content' => $this->new_lesson_content,
@@ -166,7 +172,7 @@ class LessonViewer extends Component
         $this->new_lesson_content = '';
 
         session()->flash('course_message', 'Nueva lección añadida correctamente.');
-        $this->loadCourseData($this->course->slug);
+        $this->loadCourseData($this->course_slug);
     }
 
     public function deleteLesson($id)
@@ -174,14 +180,37 @@ class LessonViewer extends Component
         $lesson = Lesson::find($id);
         if ($lesson) {
             $lesson->delete();
-            $this->activeLesson = null;
+            $this->active_lesson_id = null;
             session()->flash('course_message', 'Lección eliminada correctamente.');
-            $this->loadCourseData($this->course->slug);
+            $this->loadCourseData($this->course_slug);
         }
     }
 
     public function render()
     {
-        return view('livewire.lesson-viewer')->layout('layouts.livewire');
+        $course = Course::where('slug', $this->course_slug)->firstOrFail();
+        $user = auth()->user();
+
+        if ($user && ($user->hasRole('admin') || $user->hasRole('manager') || ($user->hasRole('teacher') && $course->teacher->user_id === $user->id))) {
+            $course = Course::with(['lessons' => function($q) {
+                $q->orderBy('position');
+            }])->where('slug', $this->course_slug)->firstOrFail();
+        } else {
+            $course = Course::with(['lessons' => function($q) {
+                $q->where('is_published', true)->orderBy('position');
+            }])->where('slug', $this->course_slug)->firstOrFail();
+        }
+
+        $activeLesson = null;
+        if ($this->active_lesson_id) {
+            $activeLesson = $course->lessons->firstWhere('id', $this->active_lesson_id) ?: $course->lessons->first();
+        } elseif ($course->lessons->isNotEmpty()) {
+            $activeLesson = $course->lessons->first();
+        }
+
+        return view('livewire.lesson-viewer', [
+            'course' => $course,
+            'activeLesson' => $activeLesson,
+        ])->layout('layouts.livewire');
     }
 }

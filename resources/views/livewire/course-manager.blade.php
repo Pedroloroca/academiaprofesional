@@ -2,10 +2,10 @@
     <!-- Header Area -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-            @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('manager'))
+            @if($isAdminOrManager)
                 <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Cursos</h2>
                 <p class="text-sm text-gray-500 mt-1">Administra los contenidos, precios y estados de todos los cursos de la academia.</p>
-            @elseif(auth()->user()->hasRole('teacher'))
+            @elseif($isTeacher)
                 <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Mis Cursos</h2>
                 <p class="text-sm text-gray-500 mt-1">Visualiza y gestiona los cursos en los que impartes clases.</p>
             @else
@@ -13,7 +13,7 @@
                 <p class="text-sm text-gray-500 mt-1">Accede a tus cursos matriculados y sigue aprendiendo.</p>
             @endif
         </div>
-        @if(!auth()->user()->hasRole('student'))
+        @if(!$isStudent)
         <button wire:click="create()" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
             <span>➕</span> Crear Nuevo Curso
         </button>
@@ -76,11 +76,11 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-bold">
-                            @if(auth()->user()->hasRole('student'))
+                            @if($isStudent)
                             <a href="/cursos/{{ $course->slug }}" class="text-indigo-600 hover:text-indigo-800 mr-4 inline-flex items-center gap-1 transition-colors">
                                 📖 Ver contenido
                             </a>
-                            @elseif(auth()->user()->hasRole('teacher'))
+                            @elseif($isTeacher)
                             <a href="/cursos/{{ $course->slug }}" class="text-indigo-600 hover:text-indigo-800 mr-4 inline-flex items-center gap-1 transition-colors">
                                 ✏ Gestionar / Ver contenido
                             </a>
@@ -102,6 +102,62 @@
             </table>
         </div>
     </div>
+
+    @if($isAdminOrManager && count($deletedCourses) > 0)
+    <div class="mt-12 bg-white rounded-2xl border border-red-100 shadow-xl overflow-hidden mb-12 animate-fade-in">
+        <div class="p-6 bg-red-50/50 border-b border-red-100">
+            <h3 class="text-xl font-extrabold text-red-900 tracking-tight flex items-center gap-2">
+                <span>🗑</span> Papelera de Cursos Eliminados (Recuperación)
+            </h3>
+            <p class="text-sm text-red-600/70 mt-1">Como Administrador, puedes restaurar o eliminar de forma definitiva los siguientes cursos.</p>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-100">
+                <thead class="bg-gray-50/40 select-none">
+                    <tr>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Título del Curso</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Profesor</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Precio</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Ámbito</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 bg-white">
+                    @foreach($deletedCourses as $course)
+                    <tr class="hover:bg-red-50/30 transition-colors duration-150">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl select-none">📘</span>
+                                <div class="text-sm font-extrabold text-gray-900">{{ $course->title }}</div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="text-sm font-bold text-gray-700">{{ $course->teacher->user->name ?? 'Instructor' }}</span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-extrabold text-indigo-600">
+                            ${{ number_format($course->price, 2) }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-3 py-1 inline-flex text-xs leading-5 font-black rounded-full select-none {{ $course->scope === 'profesional' ? 'bg-indigo-100 text-indigo-800' : 'bg-purple-100 text-purple-800' }}">
+                                {{ $course->scope === 'profesional' ? 'Profesional' : 'Escolar' }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-bold flex items-center gap-4">
+                            <button wire:click="restore({{ $course->id }})" class="text-green-600 hover:text-green-800 inline-flex items-center gap-1 transition-colors">
+                                🔄 Restaurar
+                            </button>
+                            <button wire:click="forceDelete({{ $course->id }})" onclick="confirm('¿Estás seguro de eliminar este curso de forma permanente?') || event.stopImmediatePropagation()" class="text-red-600 hover:text-red-800 inline-flex items-center gap-1 transition-colors">
+                                ❌ Eliminar Definitivo
+                            </button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @endif
+
 
     <!-- Modal for Create/Update -->
     @if($isOpen)
@@ -135,7 +191,7 @@
                             <x-ui.input type="number" step="0.01" id="price" wire:model="price" class="mt-1 block w-full rounded-xl border-gray-200" placeholder="0.00" />
                             @error('price') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
                         </div>
-                        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('manager'))
+                        @if($isAdminOrManager)
                         <div class="mb-5">
                             <x-ui.label for="teacher_id" value="Asignar Profesor" class="font-bold text-gray-700" />
                             <x-ui.select id="teacher_id" wire:model="teacher_id" class="mt-1 block w-full rounded-xl border-gray-200">

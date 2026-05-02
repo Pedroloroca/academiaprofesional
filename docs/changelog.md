@@ -95,3 +95,16 @@ Migración total del frontend de Vue a Blade Auth, eliminación de Inertia, crea
     - **Background:** `ProcessVideoUpload`, `GenerateCourseCertificate`, `BulkEmailStudents`.
     - **Síncronos:** `CalculateStudentGPA`, `UpdateCourseStats`.
 
+---
+
+## [Fase 8 - Refuerzo y WYSIWYG] Correcciones Avanzadas y SoftDeletes
+**Fecha:** 2 de Mayo de 2026
+
+### Cambios Realizados:
+- **WYSIWYG Trix Editor**: Integración de editor rico para el campo `explanation` en Cursos y Lecciones.
+- **SafeDelete / SoftDeletes**: Implementación de borrado suave para recuperar o borrar permanentemente cursos desde un Recycle Bin accesible solo a administradores.
+- **Corrección de Rendimiento y Bloqueos (Hydration/Roles loops)**:
+    - Eliminación de Eloquent Collections de las propiedades públicas en Livewire para evitar tiempos de espera excesivos (30s exceeded).
+    - Optimización en el cálculo de roles (`isAdminOrManager`, `$isTeacher`, `$isStudent`) en el componente PHP una sola vez para prevenir recursividad del motor Blade/Spatie.
+
+
