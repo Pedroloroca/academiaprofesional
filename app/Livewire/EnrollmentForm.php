@@ -18,15 +18,24 @@ class EnrollmentForm extends Component
 
     public function enroll()
     {
-        $this->validate([
-            'student_id' => 'required|exists:students,id'
-        ]);
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
 
-        $student = Student::find($this->student_id);
+        $user = auth()->user();
+
+        // Ensure user has student role just in case
+        if (!$user->hasRole('student')) {
+            $user->assignRole('student');
+        }
+
+        $student = Student::firstOrCreate(
+            ['user_id' => $user->id]
+        );
         
         // Prevent duplicate enrollment
         if ($student->courses()->where('course_id', $this->course->id)->exists()) {
-            session()->flash('error', 'El estudiante ya está matriculado en este curso.');
+            session()->flash('error', 'Ya estás matriculado en este curso.');
             return;
         }
 
@@ -48,8 +57,8 @@ class EnrollmentForm extends Component
         // Dispatch sync job to update course stats
         \App\Jobs\UpdateCourseStats::dispatch($this->course);
 
-        session()->flash('message', 'Matriculación completada con éxito.');
-        $this->student_id = '';
+        session()->flash('message', '¡Te has matriculado con éxito!');
+        return redirect()->to('/admin/courses');
     }
 
     public function render()

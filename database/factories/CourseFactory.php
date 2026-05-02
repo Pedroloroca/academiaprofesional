@@ -30,10 +30,7 @@ class CourseFactory extends Factory
             'Ciberseguridad para principiantes'
         ];
 
-        $title = $this->faker->unique()->randomElement($titles);
-        if (!$title) {
-            $title = $this->faker->sentence(3) . ' (Apoyo Escolar)';
-        }
+        $title = $this->faker->randomElement($titles) . ' - ' . $this->faker->numberBetween(1, 99);
 
         $isClassroom = $this->faker->boolean(50); // 50% chance of classroom-based tutoring
 

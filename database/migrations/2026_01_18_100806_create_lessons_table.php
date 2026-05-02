@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('content')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('is_published')->default(false);
+            $table->string('video_url')->nullable();
             $table->timestamps();
         });
     }

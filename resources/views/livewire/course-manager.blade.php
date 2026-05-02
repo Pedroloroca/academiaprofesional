@@ -2,12 +2,22 @@
     <!-- Header Area -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-            <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Gestión de Cursos</h2>
-            <p class="text-sm text-gray-500 mt-1">Administra los contenidos, precios y estados de los cursos de la academia.</p>
+            @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('manager'))
+                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Cursos</h2>
+                <p class="text-sm text-gray-500 mt-1">Administra los contenidos, precios y estados de todos los cursos de la academia.</p>
+            @elseif(auth()->user()->hasRole('teacher'))
+                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Mis Cursos</h2>
+                <p class="text-sm text-gray-500 mt-1">Visualiza y gestiona los cursos en los que impartes clases.</p>
+            @else
+                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Mis Cursos</h2>
+                <p class="text-sm text-gray-500 mt-1">Accede a tus cursos matriculados y sigue aprendiendo.</p>
+            @endif
         </div>
+        @if(!auth()->user()->hasRole('student'))
         <button wire:click="create()" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
             <span>➕</span> Crear Nuevo Curso
         </button>
+        @endif
     </div>
 
     <!-- Alert Message -->
@@ -66,12 +76,25 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-bold">
+                            @if(auth()->user()->hasRole('student'))
+                            <a href="/cursos/{{ $course->slug }}" class="text-indigo-600 hover:text-indigo-800 mr-4 inline-flex items-center gap-1 transition-colors">
+                                📖 Ver contenido
+                            </a>
+                            @elseif(auth()->user()->hasRole('teacher'))
+                            <a href="/cursos/{{ $course->slug }}" class="text-indigo-600 hover:text-indigo-800 mr-4 inline-flex items-center gap-1 transition-colors">
+                                ✏ Gestionar / Ver contenido
+                            </a>
+                            <button wire:click="delete({{ $course->id }})" class="text-red-600 hover:text-red-800 inline-flex items-center gap-1 transition-colors">
+                                🗑 Eliminar
+                            </button>
+                            @else
                             <button wire:click="edit({{ $course->id }})" class="text-indigo-600 hover:text-indigo-800 mr-4 inline-flex items-center gap-1 transition-colors">
                                 ✏ Editar
                             </button>
                             <button wire:click="delete({{ $course->id }})" class="text-red-600 hover:text-red-800 inline-flex items-center gap-1 transition-colors">
                                 🗑 Eliminar
                             </button>
+                            @endif
                         </td>
                     </tr>
                     @endforeach
@@ -90,7 +113,7 @@
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
             <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-gray-100">
-                <form wire:submit.prevent="store">
+                <form x-data @submit.prevent="$wire.set('explanation', document.getElementById('explanation-input').value); $wire.store()">
                     <div class="bg-white px-6 pt-6 pb-4 sm:p-8 sm:pb-6">
                         <div class="flex justify-between items-center mb-6 border-b pb-4">
                             <h3 class="text-xl font-extrabold text-gray-900">{{ $course_id ? '✏ Editar Curso' : '➕ Crear Nuevo Curso' }}</h3>
@@ -112,6 +135,7 @@
                             <x-ui.input type="number" step="0.01" id="price" wire:model="price" class="mt-1 block w-full rounded-xl border-gray-200" placeholder="0.00" />
                             @error('price') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
                         </div>
+                        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('manager'))
                         <div class="mb-5">
                             <x-ui.label for="teacher_id" value="Asignar Profesor" class="font-bold text-gray-700" />
                             <x-ui.select id="teacher_id" wire:model="teacher_id" class="mt-1 block w-full rounded-xl border-gray-200">
@@ -122,6 +146,13 @@
                             </x-ui.select>
                             @error('teacher_id') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
                         </div>
+                        @else
+                        <!-- Field is automatically set for teachers -->
+                        <div class="mb-5">
+                            <x-ui.label for="teacher_name" value="Profesor" class="font-bold text-gray-700" />
+                            <x-ui.input type="text" id="teacher_name" value="{{ auth()->user()->name }}" disabled class="mt-1 block w-full rounded-xl border-gray-200 bg-gray-50/70 text-gray-500 select-none cursor-not-allowed font-medium" />
+                        </div>
+                        @endif
                         <div class="mb-5">
                             <x-ui.label for="status" value="Estado" class="font-bold text-gray-700" />
                             <x-ui.select id="status" wire:model="status" class="mt-1 block w-full rounded-xl border-gray-200">
@@ -139,6 +170,19 @@
                                 <option value="escolar">Escolar (Colegio / Instituto)</option>
                             </x-ui.select>
                             @error('scope') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                        </div>
+
+                        <div class="mb-5" wire:ignore>
+                            <x-ui.label for="explanation-input" value="Explicación Escrita del Tema" class="font-bold text-gray-700" />
+                            <input id="explanation-input" type="hidden" value="{{ $explanation }}">
+                            <trix-editor input="explanation-input" class="trix-content border border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm mt-1 bg-white p-3 min-h-[150px] overflow-y-auto leading-relaxed text-sm select-text"></trix-editor>
+                            @error('explanation') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                        </div>
+
+                        <div class="mb-5">
+                            <x-ui.label for="video_url" value="URL del Vídeo Explicativo" class="font-bold text-gray-700" />
+                            <x-ui.input type="text" id="video_url" wire:model="video_url" class="mt-1 block w-full rounded-xl border-gray-200 focus:border-indigo-500 focus:ring-indigo-500" placeholder="Ej: https://www.youtube.com/embed/..." />
+                            @error('video_url') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
                         </div>
 
                         <!-- Extra school/classroom fields -->
@@ -177,4 +221,20 @@
         </div>
     </div>
     @endif
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
+    <script>
+        document.addEventListener('trix-change', function(e) {
+            let inputId = e.target.getAttribute('input');
+            if (inputId === 'explanation-input') {
+                let hiddenInput = document.getElementById(inputId);
+                let val = hiddenInput ? hiddenInput.value : '';
+                let wireId = e.target.closest('[wire:id]').getAttribute('wire:id');
+                if (window.Livewire) {
+                    window.Livewire.find(wireId).set('explanation', val);
+                }
+            }
+        });
+    </script>
 </div>

@@ -35,19 +35,23 @@
             @endif
 
             <form wire:submit.prevent="enroll">
-                <!-- Select Student -->
-                <div class="mb-6">
-                    <x-ui.label for="student_id" value="Seleccionar Estudiante" class="font-extrabold text-gray-700 select-none" />
-                    <div class="relative mt-2">
-                        <x-ui.select id="student_id" wire:model="student_id" class="block w-full rounded-xl border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 text-sm py-3 pl-4 pr-10 shadow-sm transition-all">
-                            <option value="">-- Buscar y Seleccionar Alumno --</option>
-                            @foreach($students as $student)
-                                <option value="{{ $student->id }}">{{ $student->user->name ?? 'Estudiante' }} ({{ $student->user->email ?? 'N/A' }})</option>
-                            @endforeach
-                        </x-ui.select>
-                    </div>
-                    @error('student_id') <span class="text-red-500 text-xs mt-1 block font-medium">{{ $message }}</span> @enderror
-                </div>
+                 @auth
+                 <!-- Summary of logged-in user -->
+                 <div class="mb-6 p-5 bg-indigo-50/40 border border-indigo-100/50 rounded-2xl flex items-center justify-between">
+                     <div>
+                         <span class="text-xs text-indigo-500 font-bold uppercase tracking-wider block">Vas a matricularte como</span>
+                         <span class="text-base font-black text-gray-900 block mt-0.5">{{ auth()->user()->name }}</span>
+                         <span class="text-xs text-gray-400 block">{{ auth()->user()->email }}</span>
+                     </div>
+                     <span class="text-2xl select-none">👤</span>
+                 </div>
+                 @else
+                 <!-- Link to login -->
+                 <div class="mb-6 p-5 bg-yellow-50 border border-yellow-200 rounded-2xl">
+                     <p class="text-sm font-bold text-yellow-800">Inicia sesión o regístrate para matricularte.</p>
+                     <a href="/login" class="text-sm font-black text-indigo-600 hover:underline mt-1 inline-block">Ir a Iniciar Sesión &rarr;</a>
+                 </div>
+                 @endauth
 
                 <!-- Course summary sidebar (Inline) -->
                 <div class="bg-indigo-50/40 border border-indigo-100/50 rounded-2xl p-6 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">

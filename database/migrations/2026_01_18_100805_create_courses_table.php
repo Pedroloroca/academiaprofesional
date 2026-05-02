@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('schedule')->nullable();
             $table->string('classroom_pass_code')->nullable();
             $table->string('scope')->default('profesional');
+            $table->longText('explanation')->nullable();
+            $table->string('video_url')->nullable();
             $table->timestamps();
         });
     }

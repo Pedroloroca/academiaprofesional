@@ -54,7 +54,13 @@
                             <a href="/profesores" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 {{ request()->is('profesores') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">Profesores</a>
                             
                             @auth
-                            <a href="/admin/courses" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 {{ request()->is('admin/courses*') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">Mis Cursos</a>
+                            <a href="/admin/courses" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 {{ request()->is('admin/courses*') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">
+                                @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('manager'))
+                                    Cursos
+                                @else
+                                    Mis Cursos
+                                @endif
+                            </a>
                             @hasrole('admin|manager')
                             <a href="/admin/students" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 {{ request()->is('admin/students*') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">Estudiantes</a>
                             @endhasrole

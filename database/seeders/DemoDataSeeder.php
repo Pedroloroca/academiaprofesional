@@ -29,7 +29,7 @@ class DemoDataSeeder extends Seeder
 
         $this->command->info("✓ 5 profesores creados.");
 
-        // 2. Crear 10 cursos distribuidos entre los profesores
+        // 2. Crear 10 cursos publicados distribuidos entre los profesores
         $courses = collect();
         for ($i = 0; $i < 10; $i++) {
             $course = Course::factory()->create([
@@ -39,7 +39,16 @@ class DemoDataSeeder extends Seeder
             $courses->push($course);
         }
 
-        $this->command->info("✓ 10 cursos creados.");
+        // 2.2. Crear 5 cursos en estado borrador (sin publicar)
+        for ($i = 0; $i < 5; $i++) {
+            $course = Course::factory()->create([
+                'teacher_id' => $teachers->random()->id,
+                'status'     => 'draft',
+            ]);
+            $courses->push($course);
+        }
+
+        $this->command->info("✓ 15 cursos creados (10 publicados, 5 borradores).");
 
         // 3. Crear 3 lecciones por curso (30 lecciones en total)
         foreach ($courses as $position => $course) {

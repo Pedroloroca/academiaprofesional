@@ -10,7 +10,7 @@ class CourseManager extends Component
 {
     public $courses, $teachers;
     public $course_id, $title, $description, $price, $teacher_id, $status;
-    public $is_classroom = false, $schedule, $classroom_pass_code, $scope = 'profesional';
+    public $is_classroom = false, $schedule, $classroom_pass_code, $scope = 'profesional', $explanation, $video_url;
     public $isOpen = false;
 
     public function mount()
@@ -21,12 +21,44 @@ class CourseManager extends Component
 
     public function loadCourses()
     {
-        $this->courses = Course::with('teacher.user')->get();
+        $user = auth()->user();
+        if (!$user) {
+            $this->courses = collect();
+            return;
+        }
+
+        if ($user->hasRole('admin') || $user->hasRole('manager')) {
+            $this->courses = Course::with('teacher.user')->get();
+        } elseif ($user->hasRole('teacher')) {
+            $teacher = \App\Models\Teacher::where('user_id', $user->id)->first();
+            if ($teacher) {
+                $this->courses = Course::where('teacher_id', $teacher->id)->with('teacher.user')->get();
+            } else {
+                $this->courses = collect();
+            }
+        } elseif ($user->hasRole('student')) {
+            $student = \App\Models\Student::where('user_id', $user->id)->first();
+            if ($student) {
+                $this->courses = Course::whereHas('enrollments', function($q) use ($student) {
+                    $q->where('student_id', $student->id);
+                })->with('teacher.user')->get();
+            } else {
+                $this->courses = collect();
+            }
+        } else {
+            $this->courses = collect();
+        }
     }
 
     public function create()
     {
         $this->resetInputFields();
+        if (auth()->user()->hasRole('teacher')) {
+            $teacher = \App\Models\Teacher::where('user_id', auth()->id())->first();
+            if ($teacher) {
+                $this->teacher_id = $teacher->id;
+            }
+        }
         $this->openModal();
     }
 
@@ -53,6 +85,8 @@ class CourseManager extends Component
         $this->schedule = '';
         $this->classroom_pass_code = '';
         $this->scope = 'profesional';
+        $this->explanation = '';
+        $this->video_url = '';
     }
 
     public function store()
@@ -67,6 +101,8 @@ class CourseManager extends Component
             'schedule' => 'nullable|string',
             'classroom_pass_code' => 'nullable|string',
             'scope' => 'required|in:profesional,escolar',
+            'explanation' => 'nullable|string',
+            'video_url' => 'nullable|string',
         ]);
 
         $isNew = !$this->course_id;
@@ -83,6 +119,8 @@ class CourseManager extends Component
             'schedule' => $this->schedule,
             'classroom_pass_code' => $this->classroom_pass_code,
             'scope' => $this->scope,
+            'explanation' => $this->explanation,
+            'video_url' => $this->video_url,
         ]);
 
         // 1. Dispatch CoursePublished event
@@ -117,6 +155,8 @@ class CourseManager extends Component
         $this->schedule = $course->schedule;
         $this->classroom_pass_code = $course->classroom_pass_code;
         $this->scope = $course->scope ?: 'profesional';
+        $this->explanation = $course->explanation;
+        $this->video_url = $course->video_url;
         $this->openModal();
     }
 

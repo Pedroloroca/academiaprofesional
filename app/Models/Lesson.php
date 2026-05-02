@@ -11,7 +11,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Lesson extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
-    protected $fillable = ['course_id', 'title', 'slug', 'content', 'position', 'is_published'];
+    protected $fillable = ['course_id', 'title', 'slug', 'content', 'position', 'is_published', 'video_url'];
 
     public function course()
     {

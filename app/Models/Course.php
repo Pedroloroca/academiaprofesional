@@ -13,7 +13,7 @@ class Course extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
     
-    protected $fillable = ['teacher_id', 'title', 'slug', 'description', 'price', 'status', 'is_classroom', 'schedule', 'classroom_pass_code', 'scope'];
+    protected $fillable = ['teacher_id', 'title', 'slug', 'description', 'price', 'status', 'is_classroom', 'schedule', 'classroom_pass_code', 'scope', 'explanation', 'video_url'];
 
     public function teacher()
     {
