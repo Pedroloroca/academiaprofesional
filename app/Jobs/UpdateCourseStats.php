@@ -20,5 +20,7 @@ class UpdateCourseStats
         // Count enrollments
         $count = $this->course->enrollments()->count();
         Log::info("Alumnos matriculados totales: {$count}");
+
+        \Illuminate\Support\Facades\Artisan::call('academy:recalculate-stats');
     }
 }

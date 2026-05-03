@@ -51,10 +51,10 @@ Automatización de flujos de trabajo.
 - [x] Crear Listeners (`SendWelcomeEmail`, etc.).
 - [x] Implementar 5 Jobs (3 en cola, 2 síncronos).
 
-## 🔲 Fase 9: Comandos de Consola
+## ✅ Fase 9: Comandos de Consola
 Herramientas de mantenimiento y automatización interna.
-- [ ] Crear 7 comandos Artisan personalizados.
-- [ ] Implementar invocación interna de comandos desde código.
+- [x] Crear 7 comandos Artisan personalizados.
+- [x] Implementar invocación interna de comandos desde código.
 
 ## 🔲 Fase 10: Emails y Notificaciones
 Comunicación con los usuarios.
