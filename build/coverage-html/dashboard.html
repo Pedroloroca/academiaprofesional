@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\Users\Pedro\Herd\academiaprofesional\app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=12.5.2" rel="stylesheet" type="text/css">
+  <link href="_css/billboard.min.css?v=12.5.2" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=12.5.2" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">C:\Users\Pedro\Herd\academiaprofesional\app</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classesCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Console/Commands/SeedDemoData.php.html#8">App\Console\Commands\SeedDemoData</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Events/CoursePublished.php.html#7">App\Events\CoursePublished</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Events/LessonCompleted.php.html#8">App\Events\LessonCompleted</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/BulkEmailStudents.php.html#11">App\Jobs\BulkEmailStudents</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/CalculateStudentGPA.php.html#7">App\Jobs\CalculateStudentGPA</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/GenerateCourseCertificate.php.html#12">App\Jobs\GenerateCourseCertificate</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/ProcessVideoUpload.php.html#10">App\Jobs\ProcessVideoUpload</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/NotifyStudentsAboutNewCourse.php.html#7">App\Listeners\NotifyStudentsAboutNewCourse</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/UpdateCourseProgress.php.html#6">App\Listeners\UpdateCourseProgress</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/CatalogSelector.php.html#7">App\Livewire\CatalogSelector</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/DashboardStats.php.html#10">App\Livewire\DashboardStats</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#9">App\Livewire\LessonViewer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/TeacherDirectory.php.html#8">App\Livewire\TeacherDirectory</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/EnrollmentPolicy.php.html#9">App\Policies\EnrollmentPolicy</a></td><td class="text-right">6%</td></tr>
+       <tr><td><a href="Models/Payment.php.html#8">App\Models\Payment</a></td><td class="text-right">33%</td></tr>
+       <tr><td><a href="Console/Commands/NotifyTeachers.php.html#8">App\Console\Commands\NotifyTeachers</a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Models/Course.php.html#13">App\Models\Course</a></td><td class="text-right">54%</td></tr>
+       <tr><td><a href="Listeners/GenerateInvoicePDF.php.html#9">App\Listeners\GenerateInvoicePDF</a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Livewire/StudentManager.php.html#10">App\Livewire\StudentManager</a></td><td class="text-right">61%</td></tr>
+       <tr><td><a href="Console/Commands/UnpublishEmptyCourses.php.html#8">App\Console\Commands\UnpublishEmptyCourses</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#16">App\Providers\AppServiceProvider</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Livewire/CourseManager.php.html#9">App\Livewire\CourseManager</a></td><td class="text-right">67%</td></tr>
+       <tr><td><a href="Policies/CoursePolicy.php.html#9">App\Policies\CoursePolicy</a></td><td class="text-right">69%</td></tr>
+       <tr><td><a href="Livewire/PublicCatalog.php.html#8">App\Livewire\PublicCatalog</a></td><td class="text-right">70%</td></tr>
+       <tr><td><a href="Console/Commands/SyncExternalData.php.html#8">App\Console\Commands\SyncExternalData</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Console/Commands/ArchiveOldCourses.php.html#9">App\Console\Commands\ArchiveOldCourses</a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Livewire/EnrollmentForm.php.html#9">App\Livewire\EnrollmentForm</a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Models/User.php.html#16">App\Models\User</a></td><td class="text-right">85%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Livewire/LessonViewer.php.html#9">App\Livewire\LessonViewer</a></td><td class="text-right">0.0%</td><td class="text-right">31</td><td class="text-right">992</td></tr>
+       <tr><td><a href="Policies/EnrollmentPolicy.php.html#9">App\Policies\EnrollmentPolicy</a></td><td class="text-right">6.7%</td><td class="text-right">15</td><td class="text-right">197</td></tr>
+       <tr><td><a href="Livewire/CourseManager.php.html#9">App\Livewire\CourseManager</a></td><td class="text-right">67.9%</td><td class="text-right">32</td><td class="text-right">66</td></tr>
+       <tr><td><a href="Livewire/StudentManager.php.html#10">App\Livewire\StudentManager</a></td><td class="text-right">61.3%</td><td class="text-right">17</td><td class="text-right">33</td></tr>
+       <tr><td><a href="Policies/CoursePolicy.php.html#9">App\Policies\CoursePolicy</a></td><td class="text-right">69.2%</td><td class="text-right">15</td><td class="text-right">21</td></tr>
+       <tr><td><a href="Livewire/EnrollmentForm.php.html#9">App\Livewire\EnrollmentForm</a></td><td class="text-right">85.2%</td><td class="text-right">7</td><td class="text-right">7</td></tr>
+       <tr><td><a href="Listeners/GenerateInvoicePDF.php.html#9">App\Listeners\GenerateInvoicePDF</a></td><td class="text-right">60.0%</td><td class="text-right">5</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Livewire/PublicCatalog.php.html#8">App\Livewire\PublicCatalog</a></td><td class="text-right">70.0%</td><td class="text-right">5</td><td class="text-right">5</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#16">App\Providers\AppServiceProvider</a></td><td class="text-right">66.7%</td><td class="text-right">5</td><td class="text-right">5</td></tr>
+       <tr><td><a href="Console/Commands/NotifyTeachers.php.html#8">App\Console\Commands\NotifyTeachers</a></td><td class="text-right">50.0%</td><td class="text-right">3</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Console/Commands/SyncExternalData.php.html#8">App\Console\Commands\SyncExternalData</a></td><td class="text-right">80.0%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="Console/Commands/UnpublishEmptyCourses.php.html#8">App\Console\Commands\UnpublishEmptyCourses</a></td><td class="text-right">66.7%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="Console/Commands/ArchiveOldCourses.php.html#9">App\Console\Commands\ArchiveOldCourses</a></td><td class="text-right">83.3%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2 style="margin-top: 3rem;">Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodsCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Console/Commands/SeedDemoData.php.html#13"><abbr title="App\Console\Commands\SeedDemoData::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Events/CoursePublished.php.html#12"><abbr title="App\Events\CoursePublished::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Events/LessonCompleted.php.html#14"><abbr title="App\Events\LessonCompleted::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/BulkEmailStudents.php.html#16"><abbr title="App\Jobs\BulkEmailStudents::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/BulkEmailStudents.php.html#21"><abbr title="App\Jobs\BulkEmailStudents::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/CalculateStudentGPA.php.html#12"><abbr title="App\Jobs\CalculateStudentGPA::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/CalculateStudentGPA.php.html#17"><abbr title="App\Jobs\CalculateStudentGPA::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/GenerateCourseCertificate.php.html#18"><abbr title="App\Jobs\GenerateCourseCertificate::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/GenerateCourseCertificate.php.html#24"><abbr title="App\Jobs\GenerateCourseCertificate::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/ProcessVideoUpload.php.html#15"><abbr title="App\Jobs\ProcessVideoUpload::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Jobs/ProcessVideoUpload.php.html#20"><abbr title="App\Jobs\ProcessVideoUpload::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/NotifyStudentsAboutNewCourse.php.html#9"><abbr title="App\Listeners\NotifyStudentsAboutNewCourse::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listeners/UpdateCourseProgress.php.html#8"><abbr title="App\Listeners\UpdateCourseProgress::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/CatalogSelector.php.html#9"><abbr title="App\Livewire\CatalogSelector::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/CourseManager.php.html#110"><abbr title="App\Livewire\CourseManager::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/CourseManager.php.html#128"><abbr title="App\Livewire\CourseManager::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/CourseManager.php.html#134"><abbr title="App\Livewire\CourseManager::restore">restore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/CourseManager.php.html#141"><abbr title="App\Livewire\CourseManager::forceDelete">forceDelete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/DashboardStats.php.html#12"><abbr title="App\Livewire\DashboardStats::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#35"><abbr title="App\Livewire\LessonViewer::mount">mount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#41"><abbr title="App\Livewire\LessonViewer::loadCourseData">loadCourseData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#81"><abbr title="App\Livewire\LessonViewer::loadLessonFields">loadLessonFields</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#91"><abbr title="App\Livewire\LessonViewer::selectLesson">selectLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#98"><abbr title="App\Livewire\LessonViewer::toggleEditMode">toggleEditMode</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#103"><abbr title="App\Livewire\LessonViewer::completeLesson">completeLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#116"><abbr title="App\Livewire\LessonViewer::updateCourse">updateCourse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#135"><abbr title="App\Livewire\LessonViewer::updateLesson">updateLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#156"><abbr title="App\Livewire\LessonViewer::addLesson">addLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#178"><abbr title="App\Livewire\LessonViewer::deleteLesson">deleteLesson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#189"><abbr title="App\Livewire\LessonViewer::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/StudentManager.php.html#95"><abbr title="App\Livewire\StudentManager::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/StudentManager.php.html#107"><abbr title="App\Livewire\StudentManager::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Livewire/TeacherDirectory.php.html#10"><abbr title="App\Livewire\TeacherDirectory::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Course.php.html#24"><abbr title="App\Models\Course::lessons">lessons</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Course.php.html#34"><abbr title="App\Models\Course::students">students</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Payment.php.html#17"><abbr title="App\Models\Payment::student">student</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Payment.php.html#27"><abbr title="App\Models\Payment::enrollment">enrollment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Student.php.html#28"><abbr title="App\Models\Student::payments">payments</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#62"><abbr title="App\Models\User::student">student</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/CoursePolicy.php.html#14"><abbr title="App\Policies\CoursePolicy::viewAny">viewAny</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/CoursePolicy.php.html#56"><abbr title="App\Policies\CoursePolicy::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/CoursePolicy.php.html#64"><abbr title="App\Policies\CoursePolicy::restore">restore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/CoursePolicy.php.html#72"><abbr title="App\Policies\CoursePolicy::forceDelete">forceDelete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/EnrollmentPolicy.php.html#22"><abbr title="App\Policies\EnrollmentPolicy::view">view</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/EnrollmentPolicy.php.html#48"><abbr title="App\Policies\EnrollmentPolicy::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/EnrollmentPolicy.php.html#56"><abbr title="App\Policies\EnrollmentPolicy::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/EnrollmentPolicy.php.html#64"><abbr title="App\Policies\EnrollmentPolicy::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/EnrollmentPolicy.php.html#72"><abbr title="App\Policies\EnrollmentPolicy::restore">restore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/EnrollmentPolicy.php.html#80"><abbr title="App\Policies\EnrollmentPolicy::forceDelete">forceDelete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Console/Commands/NotifyTeachers.php.html#13"><abbr title="App\Console\Commands\NotifyTeachers::handle">handle</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Livewire/CourseManager.php.html#19"><abbr title="App\Livewire\CourseManager::create">create</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#41"><abbr title="App\Providers\AppServiceProvider::configureDefaults">configureDefaults</abbr></a></td><td class="text-right">53%</td></tr>
+       <tr><td><a href="Listeners/GenerateInvoicePDF.php.html#11"><abbr title="App\Listeners\GenerateInvoicePDF::handle">handle</abbr></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Livewire/PublicCatalog.php.html#12"><abbr title="App\Livewire\PublicCatalog::mount">mount</abbr></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Livewire/StudentManager.php.html#46"><abbr title="App\Livewire\StudentManager::store">store</abbr></a></td><td class="text-right">65%</td></tr>
+       <tr><td><a href="Console/Commands/UnpublishEmptyCourses.php.html#13"><abbr title="App\Console\Commands\UnpublishEmptyCourses::handle">handle</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Livewire/CourseManager.php.html#148"><abbr title="App\Livewire\CourseManager::render">render</abbr></a></td><td class="text-right">67%</td></tr>
+       <tr><td><a href="Console/Commands/SyncExternalData.php.html#13"><abbr title="App\Console\Commands\SyncExternalData::handle">handle</abbr></a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Livewire/PublicCatalog.php.html#23"><abbr title="App\Livewire\PublicCatalog::render">render</abbr></a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Console/Commands/ArchiveOldCourses.php.html#14"><abbr title="App\Console\Commands\ArchiveOldCourses::handle">handle</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/EnrollmentController.php.html#24"><abbr title="App\Http\Controllers\Api\EnrollmentController::store">store</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Livewire/EnrollmentForm.php.html#19"><abbr title="App\Livewire\EnrollmentForm::enroll">enroll</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Providers/FortifyServiceProvider.php.html#74"><abbr title="App\Providers\FortifyServiceProvider::configureRateLimiting">configureRateLimiting</abbr></a></td><td class="text-right">85%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Livewire/LessonViewer.php.html#41"><abbr title="App\Livewire\LessonViewer::loadCourseData">loadCourseData</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">9</td><td class="text-right">90</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#189"><abbr title="App\Livewire\LessonViewer::render">render</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">9</td><td class="text-right">90</td></tr>
+       <tr><td><a href="Policies/EnrollmentPolicy.php.html#22"><abbr title="App\Policies\EnrollmentPolicy::view">view</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">9</td><td class="text-right">90</td></tr>
+       <tr><td><a href="Livewire/StudentManager.php.html#107"><abbr title="App\Livewire\StudentManager::delete">delete</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="Livewire/CourseManager.php.html#148"><abbr title="App\Livewire\CourseManager::render">render</abbr></a></td><td class="text-right">67.7%</td><td class="text-right">8</td><td class="text-right">10</td></tr>
+       <tr><td><a href="Livewire/StudentManager.php.html#46"><abbr title="App\Livewire\StudentManager::store">store</abbr></a></td><td class="text-right">65.7%</td><td class="text-right">6</td><td class="text-right">7</td></tr>
+       <tr><td><a href="Listeners/GenerateInvoicePDF.php.html#11"><abbr title="App\Listeners\GenerateInvoicePDF::handle">handle</abbr></a></td><td class="text-right">60.0%</td><td class="text-right">5</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Livewire/CourseManager.php.html#19"><abbr title="App\Livewire\CourseManager::create">create</abbr></a></td><td class="text-right">50.0%</td><td class="text-right">4</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Livewire/CourseManager.php.html#110"><abbr title="App\Livewire\CourseManager::edit">edit</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#81"><abbr title="App\Livewire\LessonViewer::loadLessonFields">loadLessonFields</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#103"><abbr title="App\Livewire\LessonViewer::completeLesson">completeLesson</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#135"><abbr title="App\Livewire\LessonViewer::updateLesson">updateLesson</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Livewire/LessonViewer.php.html#178"><abbr title="App\Livewire\LessonViewer::deleteLesson">deleteLesson</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Livewire/StudentManager.php.html#95"><abbr title="App\Livewire\StudentManager::edit">edit</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Livewire/EnrollmentForm.php.html#19"><abbr title="App\Livewire\EnrollmentForm::enroll">enroll</abbr></a></td><td class="text-right">83.3%</td><td class="text-right">5</td><td class="text-right">5</td></tr>
+       <tr><td><a href="Console/Commands/NotifyTeachers.php.html#13"><abbr title="App\Console\Commands\NotifyTeachers::handle">handle</abbr></a></td><td class="text-right">50.0%</td><td class="text-right">3</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Console/Commands/SyncExternalData.php.html#13"><abbr title="App\Console\Commands\SyncExternalData::handle">handle</abbr></a></td><td class="text-right">80.0%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="Console/Commands/UnpublishEmptyCourses.php.html#13"><abbr title="App\Console\Commands\UnpublishEmptyCourses::handle">handle</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="Livewire/PublicCatalog.php.html#12"><abbr title="App\Livewire\PublicCatalog::mount">mount</abbr></a></td><td class="text-right">60.0%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="Console/Commands/ArchiveOldCourses.php.html#14"><abbr title="App\Console\Commands\ArchiveOldCourses::handle">handle</abbr></a></td><td class="text-right">83.3%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Http/Controllers/Api/EnrollmentController.php.html#24"><abbr title="App\Http\Controllers\Api\EnrollmentController::store">store</abbr></a></td><td class="text-right">83.3%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Livewire/PublicCatalog.php.html#23"><abbr title="App\Livewire\PublicCatalog::render">render</abbr></a></td><td class="text-right">80.0%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#41"><abbr title="App\Providers\AppServiceProvider::configureDefaults">configureDefaults</abbr></a></td><td class="text-right">53.8%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 12.5.2</a> using <a href="https://www.php.net/" target="_top">PHP 8.4.14</a> and <a href="https://phpunit.de/">PHPUnit 12.5.8</a> at Sun May 3 20:11:31 UTC 2026.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/billboard.pkgd.min.js?v=12.5.2" type="text/javascript"></script>
+  <script type="application/json" id="complexity_class">[[0,1,"Console\/Commands\/SeedDemoData.php.html#8","App\\Console\\Commands\\SeedDemoData","2"],[0,1,"Events\/CoursePublished.php.html#7","App\\Events\\CoursePublished","2"],[0,1,"Events\/LessonCompleted.php.html#8","App\\Events\\LessonCompleted","2"],[0,2,"Jobs\/BulkEmailStudents.php.html#11","App\\Jobs\\BulkEmailStudents","6"],[0,2,"Jobs\/CalculateStudentGPA.php.html#7","App\\Jobs\\CalculateStudentGPA","6"],[0,2,"Jobs\/GenerateCourseCertificate.php.html#12","App\\Jobs\\GenerateCourseCertificate","6"],[0,2,"Jobs\/ProcessVideoUpload.php.html#10","App\\Jobs\\ProcessVideoUpload","6"],[0,1,"Listeners\/NotifyStudentsAboutNewCourse.php.html#7","App\\Listeners\\NotifyStudentsAboutNewCourse","2"],[0,1,"Listeners\/UpdateCourseProgress.php.html#6","App\\Listeners\\UpdateCourseProgress","2"],[0,1,"Livewire\/CatalogSelector.php.html#7","App\\Livewire\\CatalogSelector","2"],[0,1,"Livewire\/DashboardStats.php.html#10","App\\Livewire\\DashboardStats","2"],[0,31,"Livewire\/LessonViewer.php.html#9","App\\Livewire\\LessonViewer","992"],[0,1,"Livewire\/TeacherDirectory.php.html#8","App\\Livewire\\TeacherDirectory","2"],[6.666666666666667,15,"Policies\/EnrollmentPolicy.php.html#9","App\\Policies\\EnrollmentPolicy","197.93"],[33.33333333333333,3,"Models\/Payment.php.html#8","App\\Models\\Payment","5.67"],[50,3,"Console\/Commands\/NotifyTeachers.php.html#8","App\\Console\\Commands\\NotifyTeachers","4.12"],[54.54545454545454,6,"Models\/Course.php.html#13","App\\Models\\Course","9.38"],[60,5,"Listeners\/GenerateInvoicePDF.php.html#9","App\\Listeners\\GenerateInvoicePDF","6.60"],[61.29032258064516,17,"Livewire\/StudentManager.php.html#10","App\\Livewire\\StudentManager","33.76"],[66.66666666666666,3,"Console\/Commands\/UnpublishEmptyCourses.php.html#8","App\\Console\\Commands\\UnpublishEmptyCourses","3.33"],[66.66666666666666,5,"Providers\/AppServiceProvider.php.html#16","App\\Providers\\AppServiceProvider","5.93"],[67.85714285714286,32,"Livewire\/CourseManager.php.html#9","App\\Livewire\\CourseManager","66.01"],[69.23076923076923,15,"Policies\/CoursePolicy.php.html#9","App\\Policies\\CoursePolicy","21.55"],[70,5,"Livewire\/PublicCatalog.php.html#8","App\\Livewire\\PublicCatalog","5.68"],[80,3,"Console\/Commands\/SyncExternalData.php.html#8","App\\Console\\Commands\\SyncExternalData","3.07"],[83.33333333333334,2,"Console\/Commands\/ArchiveOldCourses.php.html#9","App\\Console\\Commands\\ArchiveOldCourses","2.02"],[85.18518518518519,7,"Livewire\/EnrollmentForm.php.html#9","App\\Livewire\\EnrollmentForm","7.16"],[85.71428571428571,3,"Models\/User.php.html#16","App\\Models\\User","3.03"],[92.3076923076923,6,"Models\/Student.php.html#9","App\\Models\\Student","6.02"],[92.85714285714286,6,"Http\/Controllers\/Api\/EnrollmentController.php.html#11","App\\Http\\Controllers\\Api\\EnrollmentController","6.01"],[96.29629629629629,5,"Providers\/FortifyServiceProvider.php.html#15","App\\Providers\\FortifyServiceProvider","5"],[100,1,"Actions\/Fortify\/CreateNewUser.php.html#11","App\\Actions\\Fortify\\CreateNewUser","1"],[100,1,"Actions\/Fortify\/ResetUserPassword.php.html#10","App\\Actions\\Fortify\\ResetUserPassword","1"],[100,1,"Console\/Commands\/CleanupOldEnrollments.php.html#9","App\\Console\\Commands\\CleanupOldEnrollments","1"],[100,1,"Console\/Commands\/GenerateMonthlyReport.php.html#10","App\\Console\\Commands\\GenerateMonthlyReport","1"],[100,2,"Console\/Commands\/RecalculateStats.php.html#8","App\\Console\\Commands\\RecalculateStats","2"],[100,1,"Events\/PaymentReceived.php.html#7","App\\Events\\PaymentReceived","1"],[100,1,"Events\/StudentEnrolled.php.html#7","App\\Events\\StudentEnrolled","1"],[100,1,"Events\/TeacherAssigned.php.html#8","App\\Events\\TeacherAssigned","1"],[100,5,"Http\/Controllers\/Api\/CourseController.php.html#11","App\\Http\\Controllers\\Api\\CourseController","5"],[100,6,"Http\/Controllers\/Api\/LessonController.php.html#12","App\\Http\\Controllers\\Api\\LessonController","6"],[100,5,"Http\/Controllers\/Api\/StudentController.php.html#11","App\\Http\\Controllers\\Api\\StudentController","5"],[100,5,"Http\/Controllers\/Api\/TeacherController.php.html#11","App\\Http\\Controllers\\Api\\TeacherController","5"],[100,0,"Http\/Controllers\/Controller.php.html#5","App\\Http\\Controllers\\Controller","0"],[100,2,"Http\/Controllers\/Settings\/PasswordController.php.html#11","App\\Http\\Controllers\\Settings\\PasswordController","2"],[100,4,"Http\/Controllers\/Settings\/ProfileController.php.html#15","App\\Http\\Controllers\\Settings\\ProfileController","4"],[100,3,"Http\/Controllers\/Settings\/TwoFactorAuthenticationController.php.html#13","App\\Http\\Controllers\\Settings\\TwoFactorAuthenticationController","3"],[100,5,"Http\/Controllers\/Web\/PdfController.php.html#12","App\\Http\\Controllers\\Web\\PdfController","5"],[100,1,"Http\/Middleware\/HandleAppearance.php.html#10","App\\Http\\Middleware\\HandleAppearance","1"],[100,3,"Http\/Middleware\/HandleInertiaRequests.php.html#8","App\\Http\\Middleware\\HandleInertiaRequests","3"],[100,2,"Http\/Middleware\/SetLocale.php.html#9","App\\Http\\Middleware\\SetLocale","2"],[100,2,"Http\/Requests\/Course\/StoreCourseRequest.php.html#7","App\\Http\\Requests\\Course\\StoreCourseRequest","2"],[100,2,"Http\/Requests\/Course\/UpdateCourseRequest.php.html#7","App\\Http\\Requests\\Course\\UpdateCourseRequest","2"],[100,2,"Http\/Requests\/Enrollment\/StoreEnrollmentRequest.php.html#7","App\\Http\\Requests\\Enrollment\\StoreEnrollmentRequest","2"],[100,2,"Http\/Requests\/Enrollment\/UpdateEnrollmentRequest.php.html#7","App\\Http\\Requests\\Enrollment\\UpdateEnrollmentRequest","2"],[100,2,"Http\/Requests\/Lesson\/StoreLessonRequest.php.html#7","App\\Http\\Requests\\Lesson\\StoreLessonRequest","2"],[100,2,"Http\/Requests\/Lesson\/UpdateLessonRequest.php.html#7","App\\Http\\Requests\\Lesson\\UpdateLessonRequest","2"],[100,1,"Http\/Requests\/Settings\/PasswordUpdateRequest.php.html#9","App\\Http\\Requests\\Settings\\PasswordUpdateRequest","1"],[100,1,"Http\/Requests\/Settings\/ProfileDeleteRequest.php.html#8","App\\Http\\Requests\\Settings\\ProfileDeleteRequest","1"],[100,1,"Http\/Requests\/Settings\/ProfileUpdateRequest.php.html#9","App\\Http\\Requests\\Settings\\ProfileUpdateRequest","1"],[100,2,"Http\/Requests\/Settings\/TwoFactorAuthenticationRequest.php.html#9","App\\Http\\Requests\\Settings\\TwoFactorAuthenticationRequest","2"],[100,2,"Http\/Requests\/Student\/StoreStudentRequest.php.html#7","App\\Http\\Requests\\Student\\StoreStudentRequest","2"],[100,2,"Http\/Requests\/Student\/UpdateStudentRequest.php.html#7","App\\Http\\Requests\\Student\\UpdateStudentRequest","2"],[100,2,"Http\/Requests\/Teacher\/StoreTeacherRequest.php.html#7","App\\Http\\Requests\\Teacher\\StoreTeacherRequest","2"],[100,2,"Http\/Requests\/Teacher\/UpdateTeacherRequest.php.html#7","App\\Http\\Requests\\Teacher\\UpdateTeacherRequest","2"],[100,2,"Jobs\/UpdateCourseStats.php.html#7","App\\Jobs\\UpdateCourseStats","2"],[100,1,"Listeners\/NotifyTeacherOfAssignment.php.html#6","App\\Listeners\\NotifyTeacherOfAssignment","1"],[100,4,"Listeners\/SendWelcomeEmail.php.html#8","App\\Listeners\\SendWelcomeEmail","4"],[100,2,"Livewire\/HomePage.php.html#11","App\\Livewire\\HomePage","2"],[100,2,"Mail\/EnrollmentConfirmation.php.html#10","App\\Mail\\EnrollmentConfirmation","2"],[100,2,"Mail\/LessonReminder.php.html#9","App\\Mail\\LessonReminder","2"],[100,2,"Mail\/MonthlySummary.php.html#9","App\\Mail\\MonthlySummary","2"],[100,2,"Mail\/PaymentReceived.php.html#10","App\\Mail\\PaymentReceived","2"],[100,2,"Models\/Enrollment.php.html#9","App\\Models\\Enrollment","2"],[100,1,"Models\/Lesson.php.html#11","App\\Models\\Lesson","1"],[100,2,"Models\/Teacher.php.html#9","App\\Models\\Teacher","2"],[100,2,"Concerns\/PasswordValidationRules.php.html#7","App\\Concerns\\PasswordValidationRules","2"],[100,4,"Concerns\/ProfileValidationRules.php.html#8","App\\Concerns\\ProfileValidationRules","4"]]</script>
+  <script type="application/json" id="complexity_method">[[0,1,"Console\/Commands\/SeedDemoData.php.html#13","App\\Console\\Commands\\SeedDemoData::handle","2"],[0,1,"Events\/CoursePublished.php.html#12","App\\Events\\CoursePublished::__construct","2"],[0,1,"Events\/LessonCompleted.php.html#14","App\\Events\\LessonCompleted::__construct","2"],[0,1,"Jobs\/BulkEmailStudents.php.html#16","App\\Jobs\\BulkEmailStudents::__construct","2"],[0,1,"Jobs\/BulkEmailStudents.php.html#21","App\\Jobs\\BulkEmailStudents::handle","2"],[0,1,"Jobs\/CalculateStudentGPA.php.html#12","App\\Jobs\\CalculateStudentGPA::__construct","2"],[0,1,"Jobs\/CalculateStudentGPA.php.html#17","App\\Jobs\\CalculateStudentGPA::handle","2"],[0,1,"Jobs\/GenerateCourseCertificate.php.html#18","App\\Jobs\\GenerateCourseCertificate::__construct","2"],[0,1,"Jobs\/GenerateCourseCertificate.php.html#24","App\\Jobs\\GenerateCourseCertificate::handle","2"],[0,1,"Jobs\/ProcessVideoUpload.php.html#15","App\\Jobs\\ProcessVideoUpload::__construct","2"],[0,1,"Jobs\/ProcessVideoUpload.php.html#20","App\\Jobs\\ProcessVideoUpload::handle","2"],[0,1,"Listeners\/NotifyStudentsAboutNewCourse.php.html#9","App\\Listeners\\NotifyStudentsAboutNewCourse::handle","2"],[0,1,"Listeners\/UpdateCourseProgress.php.html#8","App\\Listeners\\UpdateCourseProgress::handle","2"],[0,1,"Livewire\/CatalogSelector.php.html#9","App\\Livewire\\CatalogSelector::render","2"],[0,2,"Livewire\/CourseManager.php.html#110","App\\Livewire\\CourseManager::edit","6"],[0,1,"Livewire\/CourseManager.php.html#128","App\\Livewire\\CourseManager::delete","2"],[0,1,"Livewire\/CourseManager.php.html#134","App\\Livewire\\CourseManager::restore","2"],[0,1,"Livewire\/CourseManager.php.html#141","App\\Livewire\\CourseManager::forceDelete","2"],[0,1,"Livewire\/DashboardStats.php.html#12","App\\Livewire\\DashboardStats::render","2"],[0,1,"Livewire\/LessonViewer.php.html#35","App\\Livewire\\LessonViewer::mount","2"],[0,9,"Livewire\/LessonViewer.php.html#41","App\\Livewire\\LessonViewer::loadCourseData","90"],[0,2,"Livewire\/LessonViewer.php.html#81","App\\Livewire\\LessonViewer::loadLessonFields","6"],[0,1,"Livewire\/LessonViewer.php.html#91","App\\Livewire\\LessonViewer::selectLesson","2"],[0,1,"Livewire\/LessonViewer.php.html#98","App\\Livewire\\LessonViewer::toggleEditMode","2"],[0,2,"Livewire\/LessonViewer.php.html#103","App\\Livewire\\LessonViewer::completeLesson","6"],[0,1,"Livewire\/LessonViewer.php.html#116","App\\Livewire\\LessonViewer::updateCourse","2"],[0,2,"Livewire\/LessonViewer.php.html#135","App\\Livewire\\LessonViewer::updateLesson","6"],[0,1,"Livewire\/LessonViewer.php.html#156","App\\Livewire\\LessonViewer::addLesson","2"],[0,2,"Livewire\/LessonViewer.php.html#178","App\\Livewire\\LessonViewer::deleteLesson","6"],[0,9,"Livewire\/LessonViewer.php.html#189","App\\Livewire\\LessonViewer::render","90"],[0,2,"Livewire\/StudentManager.php.html#95","App\\Livewire\\StudentManager::edit","6"],[0,3,"Livewire\/StudentManager.php.html#107","App\\Livewire\\StudentManager::delete","12"],[0,1,"Livewire\/TeacherDirectory.php.html#10","App\\Livewire\\TeacherDirectory::render","2"],[0,1,"Models\/Course.php.html#24","App\\Models\\Course::lessons","2"],[0,1,"Models\/Course.php.html#34","App\\Models\\Course::students","2"],[0,1,"Models\/Payment.php.html#17","App\\Models\\Payment::student","2"],[0,1,"Models\/Payment.php.html#27","App\\Models\\Payment::enrollment","2"],[0,1,"Models\/Student.php.html#28","App\\Models\\Student::payments","2"],[0,1,"Models\/User.php.html#62","App\\Models\\User::student","2"],[0,1,"Policies\/CoursePolicy.php.html#14","App\\Policies\\CoursePolicy::viewAny","2"],[0,1,"Policies\/CoursePolicy.php.html#56","App\\Policies\\CoursePolicy::delete","2"],[0,1,"Policies\/CoursePolicy.php.html#64","App\\Policies\\CoursePolicy::restore","2"],[0,1,"Policies\/CoursePolicy.php.html#72","App\\Policies\\CoursePolicy::forceDelete","2"],[0,9,"Policies\/EnrollmentPolicy.php.html#22","App\\Policies\\EnrollmentPolicy::view","90"],[0,1,"Policies\/EnrollmentPolicy.php.html#48","App\\Policies\\EnrollmentPolicy::create","2"],[0,1,"Policies\/EnrollmentPolicy.php.html#56","App\\Policies\\EnrollmentPolicy::update","2"],[0,1,"Policies\/EnrollmentPolicy.php.html#64","App\\Policies\\EnrollmentPolicy::delete","2"],[0,1,"Policies\/EnrollmentPolicy.php.html#72","App\\Policies\\EnrollmentPolicy::restore","2"],[0,1,"Policies\/EnrollmentPolicy.php.html#80","App\\Policies\\EnrollmentPolicy::forceDelete","2"],[50,3,"Console\/Commands\/NotifyTeachers.php.html#13","App\\Console\\Commands\\NotifyTeachers::handle","4.12"],[50,4,"Livewire\/CourseManager.php.html#19","App\\Livewire\\CourseManager::create","6.00"],[53.84615384615385,2,"Providers\/AppServiceProvider.php.html#41","App\\Providers\\AppServiceProvider::configureDefaults","2.39"],[60,5,"Listeners\/GenerateInvoicePDF.php.html#11","App\\Listeners\\GenerateInvoicePDF::handle","6.60"],[60,3,"Livewire\/PublicCatalog.php.html#12","App\\Livewire\\PublicCatalog::mount","3.58"],[65.71428571428571,6,"Livewire\/StudentManager.php.html#46","App\\Livewire\\StudentManager::store","7.45"],[66.66666666666666,3,"Console\/Commands\/UnpublishEmptyCourses.php.html#13","App\\Console\\Commands\\UnpublishEmptyCourses::handle","3.33"],[67.74193548387096,8,"Livewire\/CourseManager.php.html#148","App\\Livewire\\CourseManager::render","10.15"],[80,3,"Console\/Commands\/SyncExternalData.php.html#13","App\\Console\\Commands\\SyncExternalData::handle","3.07"],[80,2,"Livewire\/PublicCatalog.php.html#23","App\\Livewire\\PublicCatalog::render","2.03"],[83.33333333333334,2,"Console\/Commands\/ArchiveOldCourses.php.html#14","App\\Console\\Commands\\ArchiveOldCourses::handle","2.02"],[83.33333333333334,2,"Http\/Controllers\/Api\/EnrollmentController.php.html#24","App\\Http\\Controllers\\Api\\EnrollmentController::store","2.02"],[83.33333333333334,5,"Livewire\/EnrollmentForm.php.html#19","App\\Livewire\\EnrollmentForm::enroll","5.12"],[85.71428571428571,1,"Providers\/FortifyServiceProvider.php.html#74","App\\Providers\\FortifyServiceProvider::configureRateLimiting","1.00"],[97.2972972972973,11,"Livewire\/CourseManager.php.html#58","App\\Livewire\\CourseManager::store","11"],[100,1,"Actions\/Fortify\/CreateNewUser.php.html#20","App\\Actions\\Fortify\\CreateNewUser::create","1"],[100,1,"Actions\/Fortify\/ResetUserPassword.php.html#19","App\\Actions\\Fortify\\ResetUserPassword::reset","1"],[100,1,"Console\/Commands\/CleanupOldEnrollments.php.html#14","App\\Console\\Commands\\CleanupOldEnrollments::handle","1"],[100,1,"Console\/Commands\/GenerateMonthlyReport.php.html#15","App\\Console\\Commands\\GenerateMonthlyReport::handle","1"],[100,2,"Console\/Commands\/RecalculateStats.php.html#13","App\\Console\\Commands\\RecalculateStats::handle","2"],[100,1,"Events\/PaymentReceived.php.html#12","App\\Events\\PaymentReceived::__construct","1"],[100,1,"Events\/StudentEnrolled.php.html#12","App\\Events\\StudentEnrolled::__construct","1"],[100,1,"Events\/TeacherAssigned.php.html#14","App\\Events\\TeacherAssigned::__construct","1"],[100,1,"Http\/Controllers\/Api\/CourseController.php.html#16","App\\Http\\Controllers\\Api\\CourseController::index","1"],[100,1,"Http\/Controllers\/Api\/CourseController.php.html#24","App\\Http\\Controllers\\Api\\CourseController::store","1"],[100,1,"Http\/Controllers\/Api\/CourseController.php.html#39","App\\Http\\Controllers\\Api\\CourseController::show","1"],[100,1,"Http\/Controllers\/Api\/CourseController.php.html#47","App\\Http\\Controllers\\Api\\CourseController::update","1"],[100,1,"Http\/Controllers\/Api\/CourseController.php.html#57","App\\Http\\Controllers\\Api\\CourseController::destroy","1"],[100,1,"Http\/Controllers\/Api\/EnrollmentController.php.html#16","App\\Http\\Controllers\\Api\\EnrollmentController::index","1"],[100,1,"Http\/Controllers\/Api\/EnrollmentController.php.html#41","App\\Http\\Controllers\\Api\\EnrollmentController::show","1"],[100,1,"Http\/Controllers\/Api\/EnrollmentController.php.html#49","App\\Http\\Controllers\\Api\\EnrollmentController::update","1"],[100,1,"Http\/Controllers\/Api\/EnrollmentController.php.html#63","App\\Http\\Controllers\\Api\\EnrollmentController::destroy","1"],[100,1,"Http\/Controllers\/Api\/LessonController.php.html#17","App\\Http\\Controllers\\Api\\LessonController::index","1"],[100,1,"Http\/Controllers\/Api\/LessonController.php.html#25","App\\Http\\Controllers\\Api\\LessonController::store","1"],[100,1,"Http\/Controllers\/Api\/LessonController.php.html#40","App\\Http\\Controllers\\Api\\LessonController::show","1"],[100,2,"Http\/Controllers\/Api\/LessonController.php.html#48","App\\Http\\Controllers\\Api\\LessonController::update","2"],[100,1,"Http\/Controllers\/Api\/LessonController.php.html#66","App\\Http\\Controllers\\Api\\LessonController::destroy","1"],[100,1,"Http\/Controllers\/Api\/StudentController.php.html#16","App\\Http\\Controllers\\Api\\StudentController::index","1"],[100,1,"Http\/Controllers\/Api\/StudentController.php.html#24","App\\Http\\Controllers\\Api\\StudentController::store","1"],[100,1,"Http\/Controllers\/Api\/StudentController.php.html#36","App\\Http\\Controllers\\Api\\StudentController::show","1"],[100,1,"Http\/Controllers\/Api\/StudentController.php.html#44","App\\Http\\Controllers\\Api\\StudentController::update","1"],[100,1,"Http\/Controllers\/Api\/StudentController.php.html#58","App\\Http\\Controllers\\Api\\StudentController::destroy","1"],[100,1,"Http\/Controllers\/Api\/TeacherController.php.html#16","App\\Http\\Controllers\\Api\\TeacherController::index","1"],[100,1,"Http\/Controllers\/Api\/TeacherController.php.html#24","App\\Http\\Controllers\\Api\\TeacherController::store","1"],[100,1,"Http\/Controllers\/Api\/TeacherController.php.html#36","App\\Http\\Controllers\\Api\\TeacherController::show","1"],[100,1,"Http\/Controllers\/Api\/TeacherController.php.html#44","App\\Http\\Controllers\\Api\\TeacherController::update","1"],[100,1,"Http\/Controllers\/Api\/TeacherController.php.html#58","App\\Http\\Controllers\\Api\\TeacherController::destroy","1"],[100,1,"Http\/Controllers\/Settings\/PasswordController.php.html#16","App\\Http\\Controllers\\Settings\\PasswordController::edit","1"],[100,1,"Http\/Controllers\/Settings\/PasswordController.php.html#24","App\\Http\\Controllers\\Settings\\PasswordController::update","1"],[100,1,"Http\/Controllers\/Settings\/ProfileController.php.html#20","App\\Http\\Controllers\\Settings\\ProfileController::edit","1"],[100,2,"Http\/Controllers\/Settings\/ProfileController.php.html#31","App\\Http\\Controllers\\Settings\\ProfileController::update","2"],[100,1,"Http\/Controllers\/Settings\/ProfileController.php.html#47","App\\Http\\Controllers\\Settings\\ProfileController::destroy","1"],[100,2,"Http\/Controllers\/Settings\/TwoFactorAuthenticationController.php.html#18","App\\Http\\Controllers\\Settings\\TwoFactorAuthenticationController::middleware","2"],[100,1,"Http\/Controllers\/Settings\/TwoFactorAuthenticationController.php.html#28","App\\Http\\Controllers\\Settings\\TwoFactorAuthenticationController::show","1"],[100,1,"Http\/Controllers\/Web\/PdfController.php.html#14","App\\Http\\Controllers\\Web\\PdfController::welcome","1"],[100,1,"Http\/Controllers\/Web\/PdfController.php.html#20","App\\Http\\Controllers\\Web\\PdfController::invoice","1"],[100,1,"Http\/Controllers\/Web\/PdfController.php.html#27","App\\Http\\Controllers\\Web\\PdfController::certificate","1"],[100,1,"Http\/Controllers\/Web\/PdfController.php.html#34","App\\Http\\Controllers\\Web\\PdfController::courseCatalog","1"],[100,1,"Http\/Controllers\/Web\/PdfController.php.html#41","App\\Http\\Controllers\\Web\\PdfController::teacherReport","1"],[100,1,"Http\/Middleware\/HandleAppearance.php.html#17","App\\Http\\Middleware\\HandleAppearance::handle","1"],[100,1,"Http\/Middleware\/HandleInertiaRequests.php.html#24","App\\Http\\Middleware\\HandleInertiaRequests::version","1"],[100,2,"Http\/Middleware\/HandleInertiaRequests.php.html#36","App\\Http\\Middleware\\HandleInertiaRequests::share","2"],[100,2,"Http\/Middleware\/SetLocale.php.html#16","App\\Http\\Middleware\\SetLocale::handle","2"],[100,1,"Http\/Requests\/Course\/StoreCourseRequest.php.html#9","App\\Http\\Requests\\Course\\StoreCourseRequest::authorize","1"],[100,1,"Http\/Requests\/Course\/StoreCourseRequest.php.html#14","App\\Http\\Requests\\Course\\StoreCourseRequest::rules","1"],[100,1,"Http\/Requests\/Course\/UpdateCourseRequest.php.html#9","App\\Http\\Requests\\Course\\UpdateCourseRequest::authorize","1"],[100,1,"Http\/Requests\/Course\/UpdateCourseRequest.php.html#14","App\\Http\\Requests\\Course\\UpdateCourseRequest::rules","1"],[100,1,"Http\/Requests\/Enrollment\/StoreEnrollmentRequest.php.html#9","App\\Http\\Requests\\Enrollment\\StoreEnrollmentRequest::authorize","1"],[100,1,"Http\/Requests\/Enrollment\/StoreEnrollmentRequest.php.html#14","App\\Http\\Requests\\Enrollment\\StoreEnrollmentRequest::rules","1"],[100,1,"Http\/Requests\/Enrollment\/UpdateEnrollmentRequest.php.html#9","App\\Http\\Requests\\Enrollment\\UpdateEnrollmentRequest::authorize","1"],[100,1,"Http\/Requests\/Enrollment\/UpdateEnrollmentRequest.php.html#14","App\\Http\\Requests\\Enrollment\\UpdateEnrollmentRequest::rules","1"],[100,1,"Http\/Requests\/Lesson\/StoreLessonRequest.php.html#9","App\\Http\\Requests\\Lesson\\StoreLessonRequest::authorize","1"],[100,1,"Http\/Requests\/Lesson\/StoreLessonRequest.php.html#14","App\\Http\\Requests\\Lesson\\StoreLessonRequest::rules","1"],[100,1,"Http\/Requests\/Lesson\/UpdateLessonRequest.php.html#9","App\\Http\\Requests\\Lesson\\UpdateLessonRequest::authorize","1"],[100,1,"Http\/Requests\/Lesson\/UpdateLessonRequest.php.html#14","App\\Http\\Requests\\Lesson\\UpdateLessonRequest::rules","1"],[100,1,"Http\/Requests\/Settings\/PasswordUpdateRequest.php.html#18","App\\Http\\Requests\\Settings\\PasswordUpdateRequest::rules","1"],[100,1,"Http\/Requests\/Settings\/ProfileDeleteRequest.php.html#17","App\\Http\\Requests\\Settings\\ProfileDeleteRequest::rules","1"],[100,1,"Http\/Requests\/Settings\/ProfileUpdateRequest.php.html#18","App\\Http\\Requests\\Settings\\ProfileUpdateRequest::rules","1"],[100,1,"Http\/Requests\/Settings\/TwoFactorAuthenticationRequest.php.html#16","App\\Http\\Requests\\Settings\\TwoFactorAuthenticationRequest::authorize","1"],[100,1,"Http\/Requests\/Settings\/TwoFactorAuthenticationRequest.php.html#26","App\\Http\\Requests\\Settings\\TwoFactorAuthenticationRequest::rules","1"],[100,1,"Http\/Requests\/Student\/StoreStudentRequest.php.html#9","App\\Http\\Requests\\Student\\StoreStudentRequest::authorize","1"],[100,1,"Http\/Requests\/Student\/StoreStudentRequest.php.html#14","App\\Http\\Requests\\Student\\StoreStudentRequest::rules","1"],[100,1,"Http\/Requests\/Student\/UpdateStudentRequest.php.html#9","App\\Http\\Requests\\Student\\UpdateStudentRequest::authorize","1"],[100,1,"Http\/Requests\/Student\/UpdateStudentRequest.php.html#14","App\\Http\\Requests\\Student\\UpdateStudentRequest::rules","1"],[100,1,"Http\/Requests\/Teacher\/StoreTeacherRequest.php.html#9","App\\Http\\Requests\\Teacher\\StoreTeacherRequest::authorize","1"],[100,1,"Http\/Requests\/Teacher\/StoreTeacherRequest.php.html#14","App\\Http\\Requests\\Teacher\\StoreTeacherRequest::rules","1"],[100,1,"Http\/Requests\/Teacher\/UpdateTeacherRequest.php.html#9","App\\Http\\Requests\\Teacher\\UpdateTeacherRequest::authorize","1"],[100,1,"Http\/Requests\/Teacher\/UpdateTeacherRequest.php.html#14","App\\Http\\Requests\\Teacher\\UpdateTeacherRequest::rules","1"],[100,1,"Jobs\/UpdateCourseStats.php.html#12","App\\Jobs\\UpdateCourseStats::__construct","1"],[100,1,"Jobs\/UpdateCourseStats.php.html#17","App\\Jobs\\UpdateCourseStats::handle","1"],[100,1,"Listeners\/NotifyTeacherOfAssignment.php.html#8","App\\Listeners\\NotifyTeacherOfAssignment::handle","1"],[100,4,"Listeners\/SendWelcomeEmail.php.html#10","App\\Listeners\\SendWelcomeEmail::handle","4"],[100,1,"Livewire\/CourseManager.php.html#15","App\\Livewire\\CourseManager::mount","1"],[100,1,"Livewire\/CourseManager.php.html#31","App\\Livewire\\CourseManager::openModal","1"],[100,1,"Livewire\/CourseManager.php.html#36","App\\Livewire\\CourseManager::closeModal","1"],[100,1,"Livewire\/CourseManager.php.html#42","App\\Livewire\\CourseManager::resetInputFields","1"],[100,1,"Livewire\/EnrollmentForm.php.html#14","App\\Livewire\\EnrollmentForm::mount","1"],[100,1,"Livewire\/EnrollmentForm.php.html#64","App\\Livewire\\EnrollmentForm::render","1"],[100,1,"Livewire\/HomePage.php.html#17","App\\Livewire\\HomePage::mount","1"],[100,1,"Livewire\/HomePage.php.html#24","App\\Livewire\\HomePage::render","1"],[100,1,"Livewire\/StudentManager.php.html#15","App\\Livewire\\StudentManager::mount","1"],[100,1,"Livewire\/StudentManager.php.html#19","App\\Livewire\\StudentManager::create","1"],[100,1,"Livewire\/StudentManager.php.html#25","App\\Livewire\\StudentManager::openModal","1"],[100,1,"Livewire\/StudentManager.php.html#30","App\\Livewire\\StudentManager::closeModal","1"],[100,1,"Livewire\/StudentManager.php.html#36","App\\Livewire\\StudentManager::resetInputFields","1"],[100,1,"Livewire\/StudentManager.php.html#116","App\\Livewire\\StudentManager::render","1"],[100,1,"Mail\/EnrollmentConfirmation.php.html#16","App\\Mail\\EnrollmentConfirmation::__construct","1"],[100,1,"Mail\/EnrollmentConfirmation.php.html#21","App\\Mail\\EnrollmentConfirmation::build","1"],[100,1,"Mail\/LessonReminder.php.html#16","App\\Mail\\LessonReminder::__construct","1"],[100,1,"Mail\/LessonReminder.php.html#22","App\\Mail\\LessonReminder::build","1"],[100,1,"Mail\/MonthlySummary.php.html#18","App\\Mail\\MonthlySummary::__construct","1"],[100,1,"Mail\/MonthlySummary.php.html#26","App\\Mail\\MonthlySummary::build","1"],[100,1,"Mail\/PaymentReceived.php.html#16","App\\Mail\\PaymentReceived::__construct","1"],[100,1,"Mail\/PaymentReceived.php.html#21","App\\Mail\\PaymentReceived::build","1"],[100,1,"Models\/Course.php.html#19","App\\Models\\Course::teacher","1"],[100,1,"Models\/Course.php.html#29","App\\Models\\Course::enrollments","1"],[100,1,"Models\/Course.php.html#42","App\\Models\\Course::scopePublished","1"],[100,1,"Models\/Course.php.html#47","App\\Models\\Course::scopeWithActiveEnrollments","1"],[100,1,"Models\/Enrollment.php.html#23","App\\Models\\Enrollment::student","1"],[100,1,"Models\/Enrollment.php.html#28","App\\Models\\Enrollment::course","1"],[100,1,"Models\/Lesson.php.html#16","App\\Models\\Lesson::course","1"],[100,1,"Models\/Payment.php.html#22","App\\Models\\Payment::course","1"],[100,1,"Models\/Student.php.html#18","App\\Models\\Student::user","1"],[100,1,"Models\/Student.php.html#23","App\\Models\\Student::enrollments","1"],[100,1,"Models\/Student.php.html#33","App\\Models\\Student::courses","1"],[100,1,"Models\/Student.php.html#41","App\\Models\\Student::scopeTopPerformers","1"],[100,1,"Models\/Student.php.html#48","App\\Models\\Student::scopeNeedsReinforcement","1"],[100,1,"Models\/Teacher.php.html#14","App\\Models\\Teacher::user","1"],[100,1,"Models\/Teacher.php.html#19","App\\Models\\Teacher::courses","1"],[100,1,"Models\/User.php.html#49","App\\Models\\User::casts","1"],[100,1,"Models\/User.php.html#57","App\\Models\\User::teacher","1"],[100,6,"Policies\/CoursePolicy.php.html#22","App\\Policies\\CoursePolicy::view","6"],[100,1,"Policies\/CoursePolicy.php.html#39","App\\Policies\\CoursePolicy::create","1"],[100,4,"Policies\/CoursePolicy.php.html#47","App\\Policies\\CoursePolicy::update","4"],[100,1,"Policies\/EnrollmentPolicy.php.html#14","App\\Policies\\EnrollmentPolicy::viewAny","1"],[100,1,"Providers\/AppServiceProvider.php.html#21","App\\Providers\\AppServiceProvider::register","1"],[100,1,"Providers\/AppServiceProvider.php.html#29","App\\Providers\\AppServiceProvider::boot","1"],[100,1,"Providers\/AppServiceProvider.php.html#35","App\\Providers\\AppServiceProvider::registerPolicies","1"],[100,1,"Providers\/FortifyServiceProvider.php.html#20","App\\Providers\\FortifyServiceProvider::register","1"],[100,1,"Providers\/FortifyServiceProvider.php.html#28","App\\Providers\\FortifyServiceProvider::boot","1"],[100,1,"Providers\/FortifyServiceProvider.php.html#38","App\\Providers\\FortifyServiceProvider::configureActions","1"],[100,1,"Providers\/FortifyServiceProvider.php.html#47","App\\Providers\\FortifyServiceProvider::configureViews","1"],[100,1,"Concerns\/PasswordValidationRules.php.html#14","App\\Concerns\\PasswordValidationRules::passwordRules","1"],[100,1,"Concerns\/PasswordValidationRules.php.html#24","App\\Concerns\\PasswordValidationRules::currentPasswordRules","1"],[100,1,"Concerns\/ProfileValidationRules.php.html#15","App\\Concerns\\ProfileValidationRules::profileRules","1"],[100,1,"Concerns\/ProfileValidationRules.php.html#28","App\\Concerns\\ProfileValidationRules::nameRules","1"],[100,2,"Concerns\/ProfileValidationRules.php.html#38","App\\Concerns\\ProfileValidationRules::emailRules","2"]]</script>
+  <script type="text/javascript" defer>
+  const barLabels = [
+    '0%',
+    '0-10%',
+    '10-20%',
+    '20-30%',
+    '30-40%',
+    '40-50%',
+    '50-60%',
+    '60-70%',
+    '70-80%',
+    '80-90%',
+    '90-100%',
+    '100%'
+  ];
+  const barConfig = (name, fullName, values) => ({
+    axis: {
+      x: {
+        type: "category",
+        categories: barLabels,
+      },
+      y: {
+        label: {
+          text: `#${name}`,
+          position: 'outer-top',
+        },
+      },
+    },
+    bindto: `#${name}CoverageDistribution`,
+    data: {
+      columns: [
+        [fullName].concat(values),
+      ],
+      colors: {
+        [fullName]: "rgba(69, 114, 167, 0.75)",
+      },
+      type: "bar",
+    },
+    bar: {
+      width: {
+        ratio: 0.9,
+      },
+    },
+    grid: {
+      focus: {
+        show: false,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">Coverage ${barLabels[data[0].x]}</th></tr>
+            <tr><td class="value">${data[0].value} ${name}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  bb.generate(
+    barConfig('classes', "Class Coverage", [13,1,0,0,1,0,2,6,1,4,3,47])
+  );
+  bb.generate(
+    barConfig('methods', "Method Coverage", [49,0,0,0,0,0,3,5,0,6,1,132])
+  );
+
+  const scatterConfig = (name, complexityData) => ({
+    axis: {
+      x: {
+        label: {
+          text: 'Code Coverage (in percent)',
+          position: 'outer-right',
+        },
+        tick: {
+          values: [0, 20, 40, 60, 80, 100],
+        },
+      },
+      y: {
+        label: {
+          text: 'Cyclomatic Complexity',
+          position: 'outer-top',
+        },
+        min: 0,
+        padding: {
+          bottom: 0,
+          top: 5,
+        },
+      },
+    },
+    bindto: `#${name}Complexity`,
+    data: {
+      columns: [
+        ["complexity_x"].concat(complexityData.map(d => d[0])),
+        ["complexity"].concat(complexityData.map(d => d[1])),
+      ],
+      onclick: function(data, element) {
+        window.location = complexityData[data.index][2];
+      },
+      type: "scatter",
+      xs: {
+        "complexity": "complexity_x",
+      },
+    },
+    grid: {
+      focus: {
+        show: true,
+        y: true,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        const coverage = Math.round(data[0].x);
+        const complexity = data[0].value;
+        const targetName = complexityData[data[0].index][3];
+        const crap = complexityData[data[0].index][4];
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">${targetName}</th></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Coverage</td><td class="name">${coverage}%</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Complexity</td><td class="value">${complexity}</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Crap</td><td class="value">${crap}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  const classComplexityData = JSON.parse(document.getElementById('complexity_class').textContent);
+  bb.generate(
+    scatterConfig("class", classComplexityData)
+  );
+  const methodComplexityData = JSON.parse(document.getElementById('complexity_method').textContent);
+  bb.generate(
+    scatterConfig("method", methodComplexityData),
+  );
+  </script>
+ </body>
+</html>

@@ -96,4 +96,33 @@ describe('EnrollmentPolicy', function () {
 
         expect((new \App\Policies\EnrollmentPolicy())->viewAny($studentUser))->toBeFalse();
     });
+
+    test('admin can create, update and delete enrollments', function () {
+        $admin = User::where('email', 'admin@admin.com')->first();
+        $enrollment = Enrollment::factory()->create();
+
+        expect((new \App\Policies\EnrollmentPolicy())->create($admin))->toBeTrue();
+        expect((new \App\Policies\EnrollmentPolicy())->update($admin, $enrollment))->toBeTrue();
+        expect((new \App\Policies\EnrollmentPolicy())->delete($admin, $enrollment))->toBeTrue();
+    });
+
+    test('student cannot create, update, delete, restore enrollments', function () {
+        $studentUser = User::factory()->create();
+        $studentUser->assignRole('student');
+        $enrollment = Enrollment::factory()->create();
+
+        expect((new \App\Policies\EnrollmentPolicy())->create($studentUser))->toBeFalse();
+        expect((new \App\Policies\EnrollmentPolicy())->update($studentUser, $enrollment))->toBeFalse();
+        expect((new \App\Policies\EnrollmentPolicy())->delete($studentUser, $enrollment))->toBeFalse();
+        expect((new \App\Policies\EnrollmentPolicy())->restore($studentUser, $enrollment))->toBeFalse();
+        expect((new \App\Policies\EnrollmentPolicy())->forceDelete($studentUser, $enrollment))->toBeFalse();
+    });
+
+    test('admin can restore and force delete enrollments', function () {
+        $admin = User::where('email', 'admin@admin.com')->first();
+        $enrollment = Enrollment::factory()->create();
+
+        expect((new \App\Policies\EnrollmentPolicy())->restore($admin, $enrollment))->toBeTrue();
+        expect((new \App\Policies\EnrollmentPolicy())->forceDelete($admin, $enrollment))->toBeTrue();
+    });
 });
