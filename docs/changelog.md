@@ -161,7 +161,18 @@ Migración total del frontend de Vue a Blade Auth, eliminación de Inertia, crea
 - **Integración de envío automático** de la factura en PDF adjunta al correo de confirmación de matrícula (`EnrollmentConfirmation`).
 - **Tests**: Pruebas automáticas Pest creadas y pasando al 100%.
 
+---
 
+## [Fase 12] Traducciones e Internacionalización - *Completado*
+**Fecha:** 3 de Mayo de 2026
 
+### Cambios Realizados:
+- **Instalación de `laravel-lang/common`**: Se agregaron las traducciones automáticas para los idiomas `es`, `en`, `fr`, `de`, `it`.
+- **Nuevos Archivos JSON de Traducción**: Configurados archivos `lang/es.json`, `en.json`, `fr.json`, `de.json`, `it.json` con cadenas personalizadas de la plataforma.
+- **Middleware de Localización (`SetLocale`)**: Intercepta la sesión para aplicar el idioma activo.
+- **Selector de Idioma**: Dropdown premium e interactivo implementado en el layout de Livewire.
+- **Ruta del Switcher de Idiomas**: Añadida `/lang/{locale}` para gestionar el cambio de idioma dinámico.
+- **Traducción Integral de Vistas**: Corrección de las vistas de Autenticación (`login`, `register`), Gestión de Cursos (`course-manager`) y Gestión de Estudiantes (`student-manager`) mediante el uso del helper `__()` y asignación de claves y valores en el archivo de traducción en inglés (`en.json`).
+- **Tests**: Pruebas automáticas de localización en Pest desarrolladas satisfactoriamente.
 
 

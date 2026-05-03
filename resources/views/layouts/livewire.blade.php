@@ -31,38 +31,38 @@
                         
                         <!-- Links (Desktop) -->
                         <div class="hidden md:flex items-center space-x-6">
-                            <a href="/" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 {{ request()->is('/') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">Inicio</a>
+                            <a href="/" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 {{ request()->is('/') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">{{ __('Home') }}</a>
                             
                             <!-- Dropdown for Catalog -->
                             <div class="relative group">
                                 <a href="/catalogo" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 inline-flex items-center gap-1 {{ request()->is('catalogo*') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">
-                                    <span>Catálogo</span>
+                                    <span>{{ __('Catalog') }}</span>
                                     <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                                 </a>
                                 <div class="absolute left-0 mt-0 pt-2 w-56 opacity-0 translate-y-1 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto">
                                     <div class="bg-white rounded-2xl border border-gray-100 shadow-2xl p-2 select-none">
                                         <a href="/catalogo/profesional" class="block text-sm font-bold text-gray-700 hover:text-indigo-600 hover:bg-indigo-50/50 px-4 py-3 rounded-xl transition-all">
-                                            💼 Catálogo Profesional
+                                            💼 {{ __('Catalog') }} Profesional
                                         </a>
                                         <a href="/catalogo/escolar" class="block text-sm font-bold text-gray-700 hover:text-purple-600 hover:bg-purple-50/50 px-4 py-3 rounded-xl transition-all mt-1">
-                                            🏫 Catálogo Escolar
+                                            🏫 {{ __('Catalog') }} Escolar
                                         </a>
                                     </div>
                                 </div>
                             </div>
 
-                            <a href="/profesores" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 {{ request()->is('profesores') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">Profesores</a>
+                            <a href="/profesores" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 {{ request()->is('profesores') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">{{ __('Teachers') }}</a>
                             
                             @auth
                             <a href="/admin/courses" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 {{ request()->is('admin/courses*') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">
                                 @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('manager'))
-                                    Cursos
+                                    {{ __('Courses') }}
                                 @else
-                                    Mis Cursos
+                                    Mis {{ __('Courses') }}
                                 @endif
                             </a>
                             @hasrole('admin|manager')
-                            <a href="/admin/students" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 {{ request()->is('admin/students*') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">Estudiantes</a>
+                            <a href="/admin/students" class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 {{ request()->is('admin/students*') ? 'text-indigo-600 bg-indigo-50/40 font-black' : '' }}">{{ __('Students') }}</a>
                             @endhasrole
                             @endauth
                         </div>
@@ -72,26 +72,43 @@
                     <div class="flex items-center gap-4">
                         @auth
                             <div class="hidden md:flex items-center gap-3">
-                                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Hola,</span>
+                                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">{{ __('Hola,') }}</span>
                                 <span class="text-sm text-gray-800 font-extrabold">{{ auth()->user()->name }}</span>
                             </div>
                             <a href="/dashboard" class="text-sm font-extrabold text-indigo-600 hover:text-indigo-700 bg-indigo-50/60 hover:bg-indigo-50 px-4 py-2.5 rounded-xl transition-all">
-                                Panel
+                                {{ __('Panel') }}
                             </a>
                             <form method="POST" action="{{ route('logout') }}" x-data class="inline">
                                 @csrf
                                 <button type="submit" class="text-sm font-extrabold text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-4 py-2.5 rounded-xl transition-all">
-                                    Salir
+                                    {{ __('Salir') }}
                                 </button>
                             </form>
                         @else
                             <a href="/login" class="text-sm font-extrabold text-gray-600 hover:text-gray-900 hover:bg-gray-50 px-4 py-2.5 rounded-xl transition-all">
-                                Iniciar Sesión
+                                {{ __('Iniciar Sesión') }}
                             </a>
                             <a href="/register" class="text-sm font-black bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
-                                Registrarse
+                                {{ __('Registrarse') }}
                             </a>
                         @endauth
+
+                        <!-- Language Selector -->
+                        <div class="relative group">
+                            <button class="text-sm font-extrabold text-gray-600 hover:text-indigo-600 transition-colors py-2 px-3 rounded-xl hover:bg-indigo-50/40 inline-flex items-center gap-1 uppercase select-none">
+                                <span>{{ app()->getLocale() }}</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="absolute right-0 mt-0 pt-2 w-28 opacity-0 translate-y-1 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto">
+                                <div class="bg-white rounded-2xl border border-gray-100 shadow-2xl p-2 select-none">
+                                    <a href="{{ route('locale.change', 'es') }}" class="block text-sm font-bold text-gray-700 hover:text-indigo-600 hover:bg-indigo-50/50 px-3 py-2 rounded-xl transition-all">🇪🇸 ES</a>
+                                    <a href="{{ route('locale.change', 'en') }}" class="block text-sm font-bold text-gray-700 hover:text-indigo-600 hover:bg-indigo-50/50 px-3 py-2 rounded-xl transition-all">🇬🇧 EN</a>
+                                    <a href="{{ route('locale.change', 'fr') }}" class="block text-sm font-bold text-gray-700 hover:text-indigo-600 hover:bg-indigo-50/50 px-3 py-2 rounded-xl transition-all">🇫🇷 FR</a>
+                                    <a href="{{ route('locale.change', 'de') }}" class="block text-sm font-bold text-gray-700 hover:text-indigo-600 hover:bg-indigo-50/50 px-3 py-2 rounded-xl transition-all">🇩🇪 DE</a>
+                                    <a href="{{ route('locale.change', 'it') }}" class="block text-sm font-bold text-gray-700 hover:text-indigo-600 hover:bg-indigo-50/50 px-3 py-2 rounded-xl transition-all">🇮🇹 IT</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

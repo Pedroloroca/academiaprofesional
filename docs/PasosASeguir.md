@@ -66,17 +66,17 @@ Documentos digitales.
 - [x] Instalar `laravel-dompdf`.
 - [x] Generar 5 tipos de reportes PDF (Carta de Bienvenida, Factura, Certificado, Catálogo, Reporte Profesor).
 
-## 🔲 Fase 12: Traducciones
+## ✅ Fase 12: Traducciones
 Internacionalización del sistema.
-- [ ] Configurar soporte para 5 idiomas (`es`, `en`, `fr`, `de`, `it`).
-- [ ] Externalizar cadenas de texto en archivos de recursos.
+- [x] Configurar soporte para 5 idiomas (`es`, `en`, `fr`, `de`, `it`) mediante `laravel-lang/common`.
+- [x] Externalizar cadenas de texto en archivos de recursos JSON y Blade.
 
 ## ✅ Fase 13: Testing (En progreso)
 Aseguramiento de calidad.
 - [x] Configurar framework Pest y base de datos de testing.
 - [x] Reorganizar tests por categorías: `Api`, `Web` (Auth, Settings, General), `Authorization`.
 - [x] Corregir tests pre-existentes del starter kit (rutas, CSRF, redirecciones).
-- [/] Alcanzar >85% de cobertura (Actual: ~30-40% cubriendo APIs y Authorization).
+- [] Alcanzar >85% de cobertura.
 
 ---
 

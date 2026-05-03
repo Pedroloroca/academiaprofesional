@@ -3,19 +3,19 @@
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
             @if($isAdminOrManager)
-                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Cursos</h2>
-                <p class="text-sm text-gray-500 mt-1">Administra los contenidos, precios y estados de todos los cursos de la academia.</p>
+                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">{{ __('Cursos') }}</h2>
+                <p class="text-sm text-gray-500 mt-1">{{ __('Administra los contenidos, precios y estados de todos los cursos de la academia.') }}</p>
             @elseif($isTeacher)
-                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Mis Cursos</h2>
-                <p class="text-sm text-gray-500 mt-1">Visualiza y gestiona los cursos en los que impartes clases.</p>
+                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">{{ __('Mis Cursos') }}</h2>
+                <p class="text-sm text-gray-500 mt-1">{{ __('Visualiza y gestiona los cursos en los que impartes clases.') }}</p>
             @else
-                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Mis Cursos</h2>
-                <p class="text-sm text-gray-500 mt-1">Accede a tus cursos matriculados y sigue aprendiendo.</p>
+                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">{{ __('Mis Cursos') }}</h2>
+                <p class="text-sm text-gray-500 mt-1">{{ __('Accede a tus cursos matriculados y sigue aprendiendo.') }}</p>
             @endif
         </div>
         @if(!$isStudent)
         <button wire:click="create()" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
-            <span>➕</span> Crear Nuevo Curso
+            <span>➕</span> {{ __('Crear Nuevo Curso') }}
         </button>
         @endif
     </div>
@@ -37,12 +37,12 @@
             <table class="min-w-full divide-y divide-gray-100">
                 <thead class="bg-gray-50/60 select-none">
                     <tr>
-                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Título del Curso</th>
-                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Profesor</th>
-                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Precio</th>
-                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Ámbito</th>
-                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Estado</th>
-                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Acciones</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">{{ __('Título del Curso') }}</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">{{ __('Profesor') }}</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">{{ __('Precio') }}</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">{{ __('Ámbito') }}</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">{{ __('Estado') }}</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">{{ __('Acciones') }}</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 bg-white">
@@ -67,7 +67,7 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span class="px-3 py-1 inline-flex text-xs leading-5 font-black rounded-full select-none {{ $course->scope === 'profesional' ? 'bg-indigo-100 text-indigo-800' : 'bg-purple-100 text-purple-800' }}">
-                                {{ $course->scope === 'profesional' ? 'Profesional' : 'Escolar' }}
+                                {{ $course->scope === 'profesional' ? __('Profesional') : __('Escolar') }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -78,21 +78,21 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-bold">
                             @if($isStudent)
                             <a href="/cursos/{{ $course->slug }}" class="text-indigo-600 hover:text-indigo-800 mr-4 inline-flex items-center gap-1 transition-colors">
-                                📖 Ver contenido
+                                📖 {{ __('Ver contenido') }}
                             </a>
                             @elseif($isTeacher)
                             <a href="/cursos/{{ $course->slug }}" class="text-indigo-600 hover:text-indigo-800 mr-4 inline-flex items-center gap-1 transition-colors">
-                                ✏ Gestionar / Ver contenido
+                                ✏ {{ __('Gestionar / Ver contenido') }}
                             </a>
                             <button wire:click="delete({{ $course->id }})" class="text-red-600 hover:text-red-800 inline-flex items-center gap-1 transition-colors">
-                                🗑 Eliminar
+                                🗑 {{ __('Eliminar') }}
                             </button>
                             @else
                             <button wire:click="edit({{ $course->id }})" class="text-indigo-600 hover:text-indigo-800 mr-4 inline-flex items-center gap-1 transition-colors">
-                                ✏ Editar
+                                ✏ {{ __('Editar') }}
                             </button>
                             <button wire:click="delete({{ $course->id }})" class="text-red-600 hover:text-red-800 inline-flex items-center gap-1 transition-colors">
-                                🗑 Eliminar
+                                🗑 {{ __('Eliminar') }}
                             </button>
                             @endif
                         </td>
@@ -107,19 +107,19 @@
     <div class="mt-12 bg-white rounded-2xl border border-red-100 shadow-xl overflow-hidden mb-12 animate-fade-in">
         <div class="p-6 bg-red-50/50 border-b border-red-100">
             <h3 class="text-xl font-extrabold text-red-900 tracking-tight flex items-center gap-2">
-                <span>🗑</span> Papelera de Cursos Eliminados (Recuperación)
+                <span>🗑</span> {{ __('Papelera de Cursos Eliminados (Recuperación)') }}
             </h3>
-            <p class="text-sm text-red-600/70 mt-1">Como Administrador, puedes restaurar o eliminar de forma definitiva los siguientes cursos.</p>
+            <p class="text-sm text-red-600/70 mt-1">{{ __('Como Administrador, puedes restaurar o eliminar de forma definitiva los siguientes cursos.') }}</p>
         </div>
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-100">
                 <thead class="bg-gray-50/40 select-none">
                     <tr>
-                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Título del Curso</th>
-                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Profesor</th>
-                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Precio</th>
-                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Ámbito</th>
-                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Acciones</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">{{ __('Título del Curso') }}</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">{{ __('Profesor') }}</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">{{ __('Precio') }}</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">{{ __('Ámbito') }}</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">{{ __('Acciones') }}</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 bg-white">
@@ -139,15 +139,15 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span class="px-3 py-1 inline-flex text-xs leading-5 font-black rounded-full select-none {{ $course->scope === 'profesional' ? 'bg-indigo-100 text-indigo-800' : 'bg-purple-100 text-purple-800' }}">
-                                {{ $course->scope === 'profesional' ? 'Profesional' : 'Escolar' }}
+                                {{ $course->scope === 'profesional' ? __('Profesional') : __('Escolar') }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-bold flex items-center gap-4">
                             <button wire:click="restore({{ $course->id }})" class="text-green-600 hover:text-green-800 inline-flex items-center gap-1 transition-colors">
-                                🔄 Restaurar
+                                🔄 {{ __('Restaurar') }}
                             </button>
                             <button wire:click="forceDelete({{ $course->id }})" onclick="confirm('¿Estás seguro de eliminar este curso de forma permanente?') || event.stopImmediatePropagation()" class="text-red-600 hover:text-red-800 inline-flex items-center gap-1 transition-colors">
-                                ❌ Eliminar Definitivo
+                                ❌ {{ __('Eliminar Definitivo') }}
                             </button>
                         </td>
                     </tr>

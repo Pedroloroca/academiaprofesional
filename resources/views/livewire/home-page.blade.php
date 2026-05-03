@@ -12,24 +12,24 @@
                         <span class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-indigo-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
                     </span>
-                    <span class="text-xs font-semibold text-indigo-700 tracking-wider uppercase">¡Nuevos cursos disponibles!</span>
+                    <span class="text-xs font-semibold text-indigo-700 tracking-wider uppercase">{{ __('¡Nuevos cursos disponibles!') }}</span>
                 </div>
 
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight mb-6">
-                    Potencia tu futuro en la <br/>
+                    {{ __('Potencia tu futuro en la') }} <br/>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Academia Profesional</span>
                 </h1>
                 
                 <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-                    Nuestra plataforma te ofrece los mejores cursos online creados por profesores expertos. Desarrolla habilidades demandadas y transforma tu carrera hoy mismo.
+                    {{ __('Nuestra plataforma te ofrece los mejores cursos online creados por profesores expertos. Desarrolla habilidades demandadas y transforma tu carrera hoy mismo.') }}
                 </p>
 
                 <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
                     <a href="/catalogo" class="flex items-center justify-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200">
-                        Explorar Catálogo &nbsp; &rarr;
+                        {{ __('Explorar Catálogo') }} &nbsp; &rarr;
                     </a>
                     <a href="/login" class="flex items-center justify-center px-8 py-4 bg-white hover:bg-gray-50 text-gray-800 border border-gray-200 font-bold rounded-xl shadow-sm hover:shadow hover:-translate-y-0.5 transition-all duration-200">
-                        Acceso Alumnos
+                        {{ __('Acceso Alumnos') }}
                     </a>
                 </div>
 
@@ -37,15 +37,15 @@
                 <div class="mt-12 pt-8 border-t border-gray-100 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
                     <div>
                         <p class="text-2xl md:text-3xl font-black text-indigo-600">{{ $coursesCount }}</p>
-                        <p class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Cursos</p>
+                        <p class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">{{ __('Courses') }}</p>
                     </div>
                     <div>
                         <p class="text-2xl md:text-3xl font-black text-indigo-600">{{ $studentsCount }}</p>
-                        <p class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Alumnos</p>
+                        <p class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">{{ __('Students') }}</p>
                     </div>
                     <div>
                         <p class="text-2xl md:text-3xl font-black text-indigo-600">{{ $teachersCount }}</p>
-                        <p class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">Profesores</p>
+                        <p class="text-xs text-gray-500 font-medium mt-1 uppercase tracking-wider">{{ __('Teachers') }}</p>
                     </div>
                 </div>
             </div>
@@ -65,9 +65,9 @@
                         </div>
                     </div>
                     <div class="flex flex-col flex-1 justify-center py-6">
-                        <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wider mb-2">Desarrollo Profesional</span>
+                        <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wider mb-2">{{ __('Desarrollo Profesional') }}</span>
                         <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">
-                            Domina las tecnologías más avanzadas del mercado.
+                            {{ __('Domina las tecnologías más avanzadas del mercado.') }}
                         </h3>
                     </div>
                     <div class="flex items-center justify-between pt-4 border-t border-indigo-100/60">
@@ -76,8 +76,8 @@
                                 👨‍💻
                             </div>
                             <div>
-                                <p class="text-xs font-bold text-gray-900">Aprende haciendo</p>
-                                <p class="text-xs text-gray-500">Proyectos 100% reales</p>
+                                <p class="text-xs font-bold text-gray-900">{{ __('Aprende haciendo') }}</p>
+                                <p class="text-xs text-gray-500">{{ __('Proyectos 100% reales') }}</p>
                             </div>
                         </div>
                     </div>

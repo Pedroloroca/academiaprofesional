@@ -19,7 +19,16 @@ Route::name('public.')->group(function () {
     Route::get('/catalogo', \App\Livewire\CatalogSelector::class)->name('catalog.selector');
     Route::get('/catalogo/{scope}', PublicCatalog::class)->name('catalog');
     Route::get('/profesores', TeacherDirectory::class)->name('teachers');
+
 });
+
+// Language switcher
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['es', 'en', 'fr', 'de', 'it'])) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('locale.change');
 
 // Dev Login Route (Temporary)
 if (app()->environment('local')) {
