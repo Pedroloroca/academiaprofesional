@@ -4,6 +4,10 @@ use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Notification;
 
+beforeEach(function () {
+    config(['inertia.testing.ensure_pages_exist' => false]);
+});
+
 test('password reset request screen can be rendered', function () {
     $this->get(route('password.request'))->assertOk();
 });

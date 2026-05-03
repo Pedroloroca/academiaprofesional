@@ -107,4 +107,61 @@ Migración total del frontend de Vue a Blade Auth, eliminación de Inertia, crea
     - Eliminación de Eloquent Collections de las propiedades públicas en Livewire para evitar tiempos de espera excesivos (30s exceeded).
     - Optimización en el cálculo de roles (`isAdminOrManager`, `$isTeacher`, `$isStudent`) en el componente PHP una sola vez para prevenir recursividad del motor Blade/Spatie.
 
+---
+
+## [Fase 9] Comandos de Consola - *Completado*
+**Fecha:** 3 de Mayo de 2026
+
+### Cambios Realizados:
+- **8 Comandos Artisan Personalizados**:
+    - `academy:recalculate-stats`: Calcula estadísticas de cursos.
+    - `academy:sync-external-data`: Sincroniza datos con un API externa real.
+    - `academy:cleanup-old-enrollments`: Limpia matrículas antiguas según el número de días.
+    - `academy:generate-monthly-report`: Genera un reporte mensual de actividad.
+    - `academy:seed-demo-data`: Genera datos de prueba de manera rápida.
+    - `academy:notify-teachers`: Notifica a los profesores de sus alumnos matriculados.
+    - `academy:archive-old-courses`: Archiva cursos antiguos.
+    - `academy:unpublish-empty-courses`: Comando alternativo para despublicar cursos con cero alumnos.
+- **Invocación interna desde el código**:
+    - `academy:recalculate-stats` se invoca dentro del Job `UpdateCourseStats`.
+    - `academy:cleanup-old-enrollments` se invoca dentro del Job `CalculateStudentGPA`.
+- **Tests de Consola**: Creación de tests automáticos en Pest para verificar el correcto funcionamiento de todos los comandos Artisan.
+
+---
+
+## [Fase 10] Emails y Notificaciones - *Completado*
+**Fecha:** 3 de Mayo de 2026
+
+### Cambios Realizados:
+- **4 Mailables creadas en `app/Mail`**:
+    - `EnrollmentConfirmation`: Confirmación de matrícula.
+    - `LessonReminder`: Recordatorio de lección.
+    - `PaymentReceived`: Confirmación de pago recibido.
+    - `MonthlySummary`: Resumen mensual para profesores y administradores.
+- **4 Plantillas Blade para correos creadas** en `resources/views/emails/`.
+- **Integración de envío automático** en los listeners:
+    - Al registrar una matrícula (`StudentEnrolled` -> `SendWelcomeEmail`).
+    - Al realizar un pago (`PaymentReceived` -> `GenerateInvoicePDF`).
+- **Tests**: Pruebas automáticas Pest creadas y pasando al 100%.
+
+---
+
+## [Fase 11] Generación de PDF - *Completado*
+**Fecha:** 3 de Mayo de 2026
+
+### Cambios Realizados:
+- **Instalación y configuración de `barryvdh/laravel-dompdf`**.
+- **Creación de 5 plantillas Blade para PDFs** (`resources/views/pdfs/`).
+- **Creación del `PdfController`** con rutas para:
+    - Descargar Carta de Bienvenida (`pdf.welcome`).
+    - Descargar Factura de Matrícula (`pdf.invoice`).
+    - Descargar Certificado del Curso (`pdf.certificate`).
+    - Descargar Catálogo de Cursos (`pdf.course-catalog`).
+    - Descargar Reporte para Profesores (`pdf.teacher-report`).
+- **Integración de envío automático** de la factura en PDF adjunta al correo de confirmación de matrícula (`EnrollmentConfirmation`).
+- **Tests**: Pruebas automáticas Pest creadas y pasando al 100%.
+
+
+
+
 

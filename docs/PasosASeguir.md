@@ -56,15 +56,15 @@ Herramientas de mantenimiento y automatización interna.
 - [x] Crear 7 comandos Artisan personalizados.
 - [x] Implementar invocación interna de comandos desde código.
 
-## 🔲 Fase 10: Emails y Notificaciones
+## ✅ Fase 10: Emails y Notificaciones
 Comunicación con los usuarios.
-- [ ] Crear 4 clases Mailables (Bienvenida, Factura, etc.).
-- [ ] Configurar plantillas Blade para emails.
+- [x] Crear 4 clases Mailables (Bienvenida, Factura, etc.).
+- [x] Configurar plantillas Blade para emails.
 
-## 🔲 Fase 11: Generación de PDF
+## ✅ Fase 11: Generación de PDF
 Documentos digitales.
-- [ ] Instalar `laravel-dompdf`.
-- [ ] Generar 2 tipos de reportes PDF (Certificado, Resumen).
+- [x] Instalar `laravel-dompdf`.
+- [x] Generar 5 tipos de reportes PDF (Carta de Bienvenida, Factura, Certificado, Catálogo, Reporte Profesor).
 
 ## 🔲 Fase 12: Traducciones
 Internacionalización del sistema.

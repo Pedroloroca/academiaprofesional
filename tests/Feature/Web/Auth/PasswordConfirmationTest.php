@@ -3,6 +3,10 @@
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 
+beforeEach(function () {
+    config(['inertia.testing.ensure_pages_exist' => false]);
+});
+
 test('confirm password screen can be rendered', function () {
     $user = User::factory()->create();
 

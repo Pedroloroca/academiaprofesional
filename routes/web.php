@@ -44,6 +44,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/students', StudentManager::class)->name('admin.students');
     Route::get('/cursos/{slug}/enroll', EnrollmentForm::class)->name('courses.enroll');
     Route::get('/cursos/{slug}', LessonViewer::class)->name('courses.show');
+
+    // PDF Generation Routes
+    Route::get('/pdf/welcome/{user}', [\App\Http\Controllers\Web\PdfController::class, 'welcome'])->name('pdf.welcome');
+    Route::get('/pdf/invoice/{enrollment}', [\App\Http\Controllers\Web\PdfController::class, 'invoice'])->name('pdf.invoice');
+    Route::get('/pdf/certificate/{enrollment}', [\App\Http\Controllers\Web\PdfController::class, 'certificate'])->name('pdf.certificate');
+    Route::get('/pdf/course-catalog', [\App\Http\Controllers\Web\PdfController::class, 'courseCatalog'])->name('pdf.course-catalog');
+    Route::get('/pdf/teacher-report/{teacher}', [\App\Http\Controllers\Web\PdfController::class, 'teacherReport'])->name('pdf.teacher-report');
 });
 
 require __DIR__.'/settings.php';

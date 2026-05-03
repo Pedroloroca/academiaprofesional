@@ -103,5 +103,5 @@ test('admin can delete a course', function () {
 
     $this->deleteJson("/api/courses/{$course->id}")->assertNoContent();
 
-    $this->assertDatabaseMissing('courses', ['id' => $course->id]);
+    $this->assertSoftDeleted('courses', ['id' => $course->id]);
 });

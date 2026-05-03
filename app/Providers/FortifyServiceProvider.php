@@ -52,17 +52,20 @@ class FortifyServiceProvider extends ServiceProvider
             'status' => $request->session()->get('status'),
         ]));
 
-        Fortify::resetPasswordView(fn (Request $request) => abort(404, 'Reset password not implemented yet.'));
+        Fortify::resetPasswordView(fn (Request $request) => \Inertia\Inertia::render('auth/ResetPassword', [
+            'email' => $request->input('email'),
+            'token' => $request->route('token'),
+        ]));
 
-        Fortify::requestPasswordResetLinkView(fn (Request $request) => abort(404, 'Forgot password not implemented yet.'));
+        Fortify::requestPasswordResetLinkView(fn (Request $request) => \Inertia\Inertia::render('auth/ForgotPassword'));
 
-        Fortify::verifyEmailView(fn (Request $request) => abort(404, 'Email verification not implemented yet.'));
+        Fortify::verifyEmailView(fn (Request $request) => \Inertia\Inertia::render('auth/VerifyEmail'));
 
         Fortify::registerView(fn () => view('auth.register'));
 
-        Fortify::twoFactorChallengeView(fn () => abort(404, '2FA not implemented yet.'));
+        Fortify::twoFactorChallengeView(fn () => \Inertia\Inertia::render('auth/TwoFactorChallenge'));
 
-        Fortify::confirmPasswordView(fn () => abort(404, 'Confirm password not implemented yet.'));
+        Fortify::confirmPasswordView(fn () => \Inertia\Inertia::render('auth/ConfirmPassword'));
     }
 
     /**
